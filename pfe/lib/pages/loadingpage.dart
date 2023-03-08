@@ -1,12 +1,10 @@
-import 'dart:async';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter/material.dart';
-import 'package:pfe/main.dart';
+import 'package:pfe/widget/widgets.dart';
+
 
 // void main(){
-//   runApp(MyAppp());
+//   runApp(LoadingPage());
 // }
-class MyAppp extends StatelessWidget {
+class LoadingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,7 +16,7 @@ class MyAppp extends StatelessWidget {
       home: MyHomePage(),
     );
   }
-}
+} 
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -34,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
   void navigationToNextPage() {
-    Navigator.push(context, MaterialPageRoute(builder: (context)=>MyApp()));
+    Navigator.push(context, MaterialPageRoute(builder: (context)=>Welcome()));
   }
 
   @override

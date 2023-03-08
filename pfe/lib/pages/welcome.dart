@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:pfe/widget/widgets.dart';
 
 class Welcome extends StatelessWidget {
   const Welcome({Key? key}) : super(key: key);
@@ -21,19 +21,17 @@ class Welcome extends StatelessWidget {
                     SizedBox(
                       height: 140,
                     ),
-
                     Text(
                       "Welcome",
-                      style: TextStyle(fontSize: 38,color: Colors.grey[800], fontFamily: "myfont"),
+                      style: TextStyle(
+                          fontSize: 38,
+                          color: Colors.grey[800],
+                          fontFamily: "myfont"),
                     ),
-
-
-                    Image.asset("assets/images/clogo.png",width: 300),
-
-
+                    Image.asset("assets/images/clogo.png", width: 300),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, "/login");
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
                       },
                       style: ButtonStyle(
                         backgroundColor:
@@ -45,16 +43,18 @@ class Welcome extends StatelessWidget {
                       ),
                       child: Text(
                         "Login",
-                        style: TextStyle(fontSize: 23, color: Colors.white,fontFamily: "myfont"),
+                        style: TextStyle(
+                            fontSize: 23,
+                            color: Colors.white,
+                            fontFamily: "myfont"),
                       ),
                     ),
                     SizedBox(
                       height: 22,
                     ),
-
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.pushNamed(context, "/signup");
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Signup()));
                       },
                       style: ButtonStyle(
                         backgroundColor:
@@ -66,7 +66,10 @@ class Welcome extends StatelessWidget {
                       ),
                       child: Text(
                         "Sign Up",
-                        style: TextStyle(fontSize: 22, color: Colors.white,fontFamily: "myfont"),
+                        style: TextStyle(
+                            fontSize: 22,
+                            color: Colors.white,
+                            fontFamily: "myfont"),
                       ),
                     ),
                   ],

@@ -1,5 +1,4 @@
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter/material.dart';
+import 'package:pfe/widget/widgets.dart';
 
 class Signup extends StatelessWidget {
   const Signup({Key? key}) : super(key: key);
@@ -23,7 +22,7 @@ class Signup extends StatelessWidget {
                       SizedBox(
                         height: 40,
                       ),
-                      Text(
+                      Text( 
                         "Sign up",
                         style: TextStyle(
                             fontSize: 35,
@@ -112,7 +111,7 @@ class Signup extends StatelessWidget {
                           Text("Already have an accout? "),
                           GestureDetector(
                             onTap: () {
-                              Navigator.pushNamed(context, "/login");
+                               Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
                             },
                             child: Text(
                               " Log in",
