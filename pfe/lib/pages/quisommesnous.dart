@@ -1,20 +1,5 @@
 import 'package:pfe/widget/widgets.dart';
 
-class quisommes extends StatelessWidget {
-  const quisommes({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Carousel Slider',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const QuiS(),
-    );
-  }
-}
-
 class QuiS extends StatefulWidget {
   const QuiS({Key? key}) : super(key: key);
   @override
@@ -36,15 +21,13 @@ class _QuiSState extends State<QuiS> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Carousel Slider"),
+          title: const Text("I Search"),
         ),
         body: SingleChildScrollView(
           child: Container(
-            width: double.infinity,
             padding: EdgeInsets.all(10),
-            // margin: EdgeInsets.all(20),
+            margin: EdgeInsets.all(20),
             decoration: BoxDecoration(
-              // border: Border.all(color: Colors.red, width: 1.0),
               borderRadius: BorderRadius.circular(20),
             ),
             child: Column(
@@ -98,8 +81,8 @@ class _QuiSState extends State<QuiS> {
                   margin: EdgeInsets.only(left: 80),
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Colors.lightBlue,
-                    border: Border.all(color: Colors.lightBlueAccent),
+                    color: Colors.white,
+                    border: Border.all(color: Colors.purple),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
@@ -118,7 +101,7 @@ class _QuiSState extends State<QuiS> {
                   child: Text(
                     'Votre Nom ?',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18.0, color: Colors.white),
+                    style: TextStyle(fontSize: 18.0, color: Colors.black),
                   ),
                 ),
                 SizedBox(
@@ -130,8 +113,8 @@ class _QuiSState extends State<QuiS> {
                   margin: EdgeInsets.only(right: 80),
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Colors.lightBlue,
-                    border: Border.all(color: Colors.lightBlueAccent),
+                    color: Colors.white,
+                    border: Border.all(color: Colors.pink),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
@@ -150,7 +133,7 @@ class _QuiSState extends State<QuiS> {
                   child: Text(
                     'I SEARCH?',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18.0, color: Colors.white),
+                    style: TextStyle(fontSize: 18.0, color: Colors.black),
                   ),
                 ),
                 SizedBox(
@@ -162,8 +145,8 @@ class _QuiSState extends State<QuiS> {
                   margin: EdgeInsets.only(left: 80),
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Colors.lightBlue,
-                    border: Border.all(color: Colors.lightBlueAccent),
+                    color: Colors.white,
+                    border: Border.all(color: Colors.purple),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
@@ -182,7 +165,7 @@ class _QuiSState extends State<QuiS> {
                   child: Text(
                     'Vos Qualités ?',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18.0, color: Colors.white),
+                    style: TextStyle(fontSize: 18.0, color: Colors.black),
                   ),
                 ),
                 SizedBox(
@@ -194,8 +177,8 @@ class _QuiSState extends State<QuiS> {
                   margin: EdgeInsets.only(right: 80),
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Colors.lightBlue,
-                    border: Border.all(color: Colors.lightBlueAccent),
+                    color: Colors.white,
+                    border: Border.all(color: Colors.pink),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
@@ -212,12 +195,12 @@ class _QuiSState extends State<QuiS> {
                     ],
                   ),
                   child: Text(
-                    '- Facilité\n'
-                    '- Recherche avancée\n'
-                    '- Profil utilisateur\n '
-                    '- Feedback',
+                    'Facilité\n'
+                    'Recherche avancée\n'
+                    'Profil utilisateur\n '
+                    'Feedback',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18.0, color: Colors.white),
+                    style: TextStyle(fontSize: 18.0, color: Colors.black),
                   ),
                 ),
                 SizedBox(
@@ -229,8 +212,8 @@ class _QuiSState extends State<QuiS> {
                   margin: EdgeInsets.only(left: 80),
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Colors.lightBlue,
-                    border: Border.all(color: Colors.lightBlueAccent),
+                    color: Colors.white,
+                    border: Border.all(color: Colors.purple),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
@@ -247,9 +230,9 @@ class _QuiSState extends State<QuiS> {
                     ],
                   ),
                   child: Text(
-                    'Quel est l\'objectif d\'ISEARCH?',
+                    'Quel est l\'objectif de ISEARCH?',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18.0, color: Colors.white),
+                    style: TextStyle(fontSize: 18.0, color: Colors.black),
                   ),
                 ),
                 SizedBox(
@@ -261,8 +244,8 @@ class _QuiSState extends State<QuiS> {
                   margin: EdgeInsets.only(right: 80),
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Colors.lightBlue,
-                    border: Border.all(color: Colors.lightBlueAccent),
+                    color: Colors.white,
+                    border: Border.all(color: Colors.pink),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
@@ -281,7 +264,7 @@ class _QuiSState extends State<QuiS> {
                   child: Text(
                     'L’objectif de ISEARCH est de simplifier la mise en relation des professionnels dans le but de se constituer un réseau et de l’élargir. ',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18.0, color: Colors.white),
+                    style: TextStyle(fontSize: 18.0, color: Colors.black),
                   ),
                 ),
                 SizedBox(
@@ -293,8 +276,8 @@ class _QuiSState extends State<QuiS> {
                   margin: EdgeInsets.only(left: 80),
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Colors.lightBlue,
-                    border: Border.all(color: Colors.lightBlueAccent),
+                    color: Colors.white,
+                    border: Border.all(color: Colors.purple),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
@@ -313,7 +296,7 @@ class _QuiSState extends State<QuiS> {
                   child: Text(
                     'Quelles sont les opportunités de ISEARCH?',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18.0, color: Colors.white),
+                    style: TextStyle(fontSize: 18.0, color: Colors.black),
                   ),
                 ),
                 SizedBox(
@@ -325,8 +308,8 @@ class _QuiSState extends State<QuiS> {
                   margin: EdgeInsets.only(right: 80),
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Colors.lightBlue,
-                    border: Border.all(color: Colors.lightBlueAccent),
+                    color: Colors.white,
+                    border: Border.all(color: Colors.pink),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
@@ -345,7 +328,7 @@ class _QuiSState extends State<QuiS> {
                   child: Text(
                     'ISEARCH vous permet de rentrer facilement en contact avec les différents acteurs qui gravitent dans votre secteur d’activité.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18.0, color: Colors.white),
+                    style: TextStyle(fontSize: 18.0, color: Colors.black),
                   ),
                 ),
                 SizedBox(
@@ -357,8 +340,8 @@ class _QuiSState extends State<QuiS> {
                   margin: EdgeInsets.only(left: 80),
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Colors.lightBlue,
-                    border: Border.all(color: Colors.lightBlueAccent),
+                    color: Colors.white,
+                    border: Border.all(color: Colors.purple),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
@@ -377,7 +360,7 @@ class _QuiSState extends State<QuiS> {
                   child: Text(
                     'Et pour les entrepreneurs ?',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18.0, color: Colors.white),
+                    style: TextStyle(fontSize: 18.0, color: Colors.black),
                   ),
                 ),
                 SizedBox(
@@ -389,8 +372,8 @@ class _QuiSState extends State<QuiS> {
                   margin: EdgeInsets.only(right: 80),
                   padding: EdgeInsets.all(10),
                   decoration: BoxDecoration(
-                    color: Colors.lightBlue,
-                    border: Border.all(color: Colors.lightBlueAccent),
+                    color: Colors.white,
+                    border: Border.all(color: Colors.pink),
                     borderRadius: BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
@@ -409,7 +392,7 @@ class _QuiSState extends State<QuiS> {
                   child: Text(
                     'ISEARCH conçu aussi pour aider les professionnels et entrepreneurs à élargir leur réseau professionnel, à trouver de nouvelles opportunités ou à développer leur image de marque.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 18.0, color: Colors.white),
+                    style: TextStyle(fontSize: 18.0, color: Colors.black),
                   ),
                 ),
               ],
