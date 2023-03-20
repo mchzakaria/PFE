@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:pfe/widget/widgets.dart';
 import '../auth/auth.dart';
 
@@ -11,16 +13,17 @@ class Login extends StatefulWidget {
 class _LoginState extends State<Login> {
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
+  bool _obscureText = true;
 
   void login() async {
     Auth auth = Auth();
     try {
       await auth.signInWithEmailAndPassword(
-          email: emailcontroller.text, 
-          password: passwordcontroller.text
-          );
+          email: emailcontroller.text, password: passwordcontroller.text);
     } on FirebaseAuthException catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message ?? "error"),));
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text(e.message ?? "error"),
+      ));
     }
   }
 
@@ -54,7 +57,9 @@ class _LoginState extends State<Login> {
                         "Log in",
                         style: TextStyle(fontSize: 33, fontFamily: "myfont"),
                       ),
-                      Image.asset("assets/images/clogo.png", width: 290),
+                      Image.asset("assets/images/clogo.png", width: 280),
+                      // Email TextField
+                      
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.blue[100],
@@ -76,6 +81,8 @@ class _LoginState extends State<Login> {
                       SizedBox(
                         height: 23,
                       ),
+
+                      // Password TextField
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.blue[100],
@@ -85,11 +92,20 @@ class _LoginState extends State<Login> {
                         padding: EdgeInsets.symmetric(horizontal: 16),
                         child: TextField(
                           controller: passwordcontroller,
-                          obscureText: true,
+                          obscureText: _obscureText,
                           decoration: InputDecoration(
-                              suffix: Icon(
-                                Icons.visibility_off,
-                                color: Colors.grey[800],
+                              suffixIcon: GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    _obscureText = !_obscureText;
+                                  });
+                                },
+                                child: Icon(
+                                  _obscureText
+                                      ? Icons.visibility_off
+                                      : Icons.visibility,
+                                  color: Colors.grey[800],
+                                ),
                               ),
                               icon: Icon(
                                 Icons.lock,
@@ -100,9 +116,32 @@ class _LoginState extends State<Login> {
                               border: InputBorder.none),
                         ),
                       ),
-                      SizedBox(
-                        height: 22,
+
+                      // Forget Password
+                      Container(
+                        padding: EdgeInsets.only(left: 130, top: 6),
+                        child: GestureDetector(
+                            onTap: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          ForgotPasswordPage()));
+                            },
+                            child: const Text(
+                              "Forgot Your Password?",
+                              style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.blue,
+                                  fontWeight: FontWeight.bold),
+                            )),
                       ),
+
+                      SizedBox(
+                        height: 12,
+                      ),
+
+                      // Button Login
                       ElevatedButton(
                         onPressed: login,
                         style: ButtonStyle(
@@ -120,26 +159,37 @@ class _LoginState extends State<Login> {
                           style: TextStyle(fontSize: 22),
                         ),
                       ),
+
                       SizedBox(
                         height: 17,
                       ),
+
+                      // Don't have account , go to sign up
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text("Don't have an account? "),
                           GestureDetector(
                               onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>Signup()));
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Signup()));
                               },
                               child: Text(
                                 " Sign up",
-                                style: TextStyle(fontWeight: FontWeight.bold),
+                                style: TextStyle(
+                                    color: Colors.blue,
+                                    fontWeight: FontWeight.bold),
                               )),
                         ],
                       ),
+
                       SizedBox(
                         height: 10,
                       ),
+
+                      // Black Line
                       SizedBox(
                         width: 299,
                         child: Row(
@@ -169,13 +219,17 @@ class _LoginState extends State<Login> {
                           ],
                         ),
                       ),
+
+                      // SVG Pics
                       Container(
                         margin: EdgeInsets.symmetric(vertical: 5),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Auth().signWithGoogle();
+                              },
                               child: Container(
                                 // padding: EdgeInsets.all(9),
                                 decoration: BoxDecoration(
@@ -187,9 +241,11 @@ class _LoginState extends State<Login> {
                                 ),
                               ),
                             ),
+                            // Facebook
                             SizedBox(
                               width: 22,
                             ),
+                            // Gmail
                             GestureDetector(
                               onTap: () {},
                               child: Container(
@@ -202,9 +258,12 @@ class _LoginState extends State<Login> {
                                     width: 44),
                               ),
                             ),
+
                             SizedBox(
                               width: 22,
                             ),
+
+                            // Twitter
                             GestureDetector(
                               onTap: () {},
                               child: Container(

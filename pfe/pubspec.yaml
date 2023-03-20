@@ -41,6 +41,15 @@ dependencies:
   firebase_core_web: any
   provider: ^6.0.5
   firebase_database: ^10.0.14
+  curved_navigation_bar: ^1.0.3 
+  google_sign_in: ^6.0.2
+  hexcolor: ^3.0.1
+  intl: ^0.17.0
+  csc_picker: ^0.2.7
+  intl_phone_field: ^3.1.0
+  cloud_firestore: ^4.4.5
+  firebase_auth_web: ^5.2.10
+  
 
 dev_dependencies:
   flutter_test:

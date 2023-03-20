@@ -10,4 +10,15 @@ export 'dart:async';
 export 'package:pfe/Pages/welcome.dart';
 export 'package:flutter_svg/svg.dart';
 export 'package:flutter_svg/flutter_svg.dart';
+export 'package:pfe/auth/ForgotPassword.dart';
+export 'package:pfe/Pages/quisommesnous.dart';
+export 'package:curved_navigation_bar/curved_navigation_bar.dart';
+export 'package:pfe/Pages/bottomNav.dart';
+export 'package:pfe/Pages/profile.dart';
+export 'package:pfe/auth/auth.dart';
+export 'package:csc_picker/csc_picker.dart';
+export 'package:intl_phone_field/intl_phone_field.dart';
+export 'package:cloud_firestore/cloud_firestore.dart';
+export 'package:pfe/widget/helper.dart';
+export 'package:pfe/Pages/InfoPage.dart';
 
