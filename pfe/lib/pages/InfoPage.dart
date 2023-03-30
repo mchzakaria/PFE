@@ -19,6 +19,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
   final _formKey = GlobalKey<FormState>();
   bool checkedValue = false;
   bool checkboxValue = false;
+  String dropdownValue = "Informatique";
 
   // Controllers :
   TextEditingController _date = TextEditingController();
@@ -34,13 +35,20 @@ class _RegistrationPageState extends State<RegistrationPage> {
   TextEditingController _textemailController = new TextEditingController();
   TextEditingController _textpassController = new TextEditingController();
 
-  // String _feedbackText = '';
-
   @override
   void initState() {
     super.initState();
     _textemailController = TextEditingController(text: widget.email);
     _textpassController = TextEditingController(text: widget.password);
+  }
+
+  var img;
+  String imageshow(dropdowna) {
+    if (dropdowna == "Informatique") {
+      return 'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/job.png?alt=media&token=2f9898cc-1af9-474a-9e68-23b313ba301a';
+    } else {
+      return 'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/LOGO.PNG?alt=media&token=b7e68cf5-6d3b-439a-90ff-8a85b74fb733';
+    }
   }
 
   @override
@@ -226,7 +234,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                 ThemeHelper().textInputDecoration("Password"),
                             validator: (value) {
                               if (value!.isEmpty) {
-                                return 'Please enter your Pasword ';
+                                return 'Please enter your Password ';
                               }
                               return null;
                             },
@@ -268,21 +276,92 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
                         SizedBox(height: 10.0),
 
-                        Container(
-                          decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                          child: TextFormField(
-                            controller: Speciality,
-                            validator: (value) {
-                              if (value!.isEmpty) {
-                                return 'Please enter your Speciality';
-                              }
-                              return null;
-                            },
-                            decoration: ThemeHelper().textInputDecoration(
-                              "Specialite",
+                        // Container(
+                        //   decoration: ThemeHelper().inputBoxDecorationShaddow(),
+                        //   child: TextFormField(
+                        //     controller: Speciality,
+                        //     validator: (value) {
+                        //       if (value!.isEmpty) {
+                        //         return 'Please enter your Speciality';
+                        //       }
+                        //       return null;
+                        //     },
+                        //     decoration: ThemeHelper().textInputDecoration(
+                        //       "Specialite",
+                        //     ),
+                        //     keyboardType: TextInputType.text,
+                        //   ),
+                        // ),
+                        Row(
+                          children: [
+                            SizedBox(
+                              width: 200,
+                              child: Container(
+                                // margin: EdgeInsets.only(left: 20),
+                                child: DropdownButton<String>(
+                                  alignment: Alignment.center,
+                                  value: dropdownValue,
+                                  onChanged: (newValue) {
+                                    setState(() {
+                                      dropdownValue = newValue!;
+                                    });
+
+                                    if (dropdownValue == "Economique") {
+                                      img =
+                                          'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/economique.jpg?alt=media&token=fe621a60-65b8-47ce-a543-b509245de3ea';
+                                    } else if (dropdownValue ==
+                                        "Industrielle") {
+                                      img =
+                                          'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/industruelle.jpg?alt=media&token=832f49ed-8460-437d-8e97-c78678b2b3f7';
+                                    } else if (dropdownValue ==
+                                        "Industrielle") {
+                                      img =
+                                          'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/industruelle.jpg?alt=media&token=832f49ed-8460-437d-8e97-c78678b2b3f7';
+                                    } else if (dropdownValue ==
+                                        "Informatique") {
+                                      img =
+                                          'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/informatique.jpg?alt=media&token=a7118dea-009d-4fc2-a0fd-8be36f8ef073';
+                                    } else if (dropdownValue == "Juridique") {
+                                      img =
+                                          'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/juridique.jpg?alt=media&token=8c47b059-ec83-427e-a3ef-4c3a56a516f4';
+                                    } else if (dropdownValue == "Autre") {
+                                      img =
+                                          'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/other.jpg?alt=media&token=162ae965-8f1d-4e40-baaf-e2b76de8c5b9';
+                                    } else if (dropdownValue == "Sanitaire") {
+                                      img =
+                                          'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/sanitaire.jpg?alt=media&token=086c769e-97ee-4462-996c-4ae4bb28176c';
+                                    }
+                                  },
+                                  items: <String>[
+                                    'Informatique',
+                                    'Industrielle',
+                                    'Economique',
+                                    'Sanitaire',
+                                    'Juridique',
+                                    'Autre',
+                                  ].map<DropdownMenuItem<String>>(
+                                      (String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(value),
+                                    );
+                                  }).toList(),
+                                  style: TextStyle(
+                                    color: Colors.grey[800],
+                                    fontSize: 16,
+                                  ),
+                                  icon: Icon(
+                                    Icons.arrow_drop_down,
+                                    color: Colors.grey[800],
+                                  ),
+                                  underline: Container(
+                                    height: 2,
+                                    color: Colors.grey[800],
+                                  ),
+                                ),
+                              ),
                             ),
-                            keyboardType: TextInputType.text,
-                          ),
+                          ],
                         ),
 
                         SizedBox(height: 15.0),
@@ -397,6 +476,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                   'Ville': Ville.text,
                                   'Phone Number': Phone_Number.text,
                                   'Speciality': Speciality.text,
+                                  'image': img,
                                 });
                                 print(
                                     'New user added with ID: ${newUserRef.id}');

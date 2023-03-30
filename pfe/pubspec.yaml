@@ -49,6 +49,7 @@ dependencies:
   intl_phone_field: ^3.1.0
   cloud_firestore: ^4.4.5
   firebase_auth_web: ^5.2.10
+  easy_search_bar: ^2.4.2
   
 
 dev_dependencies:

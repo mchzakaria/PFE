@@ -3,56 +3,34 @@ import 'package:pfe/widget/widgets.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
+
   @override
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Isearch App',
-      theme: ThemeData(
-        primaryColor: Colors.lightBlue,
-      ),
-      home: Editproufile(),
-    );
-  }
-}
-
-class Editproufile extends StatefulWidget {
-  const Editproufile({Key? key}) : super(key: key);
-
-  @override
-  State<Editproufile> createState() => _EditproufileState();
-}
-
-class _EditproufileState extends State<Editproufile> {
   bool is0bscurePassword = true;
   User? userId = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.blue,
-      //   leading: IconButton(
-      //     icon: Icon(
-      //       Icons.arrow_back,
-      //       color: Colors.white,
-      //     ),
-      //     onPressed: () {},
-      //   ),
-      //   actions: [
-      //     IconButton(
-      //       icon: Icon(
-      //         Icons.settings,
-      //         color: Colors.white,
-      //       ),
-      //       onPressed: () {},
-      //     )
-      //   ],
-      // ),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        leading: Image.asset("assets/images/clogo.png"),
+        title: Text("Profile Page",
+            style: TextStyle(color: Color.fromARGB(255, 96, 96, 96))),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.settings,
+              color: Colors.white,
+            ),
+            onPressed: () {},
+          )
+        ],
+      ),
       body: Container(
         padding: EdgeInsets.only(left: 15, top: 20, right: 15),
         child: GestureDetector(
@@ -61,51 +39,6 @@ class _EditproufileState extends State<Editproufile> {
           },
           child: ListView(
             children: [
-              Center(
-                child: Stack(
-                  children: [
-                    Container(
-                      width: 120,
-                      height: 120,
-                      decoration: BoxDecoration(
-                          border: Border.all(width: 4, color: Colors.white),
-                          boxShadow: [
-                            BoxShadow(
-                              spreadRadius: 2,
-                              blurRadius: 10,
-                              color: Colors.grey,
-                            )
-                          ],
-                          shape: BoxShape.circle,
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                                'https://pixabay.com/fr/photos/fille-mains-portrait-maquette-3033718/'),
-                          )),
-                    ),
-                    Positioned(
-                      bottom: 0,
-                      right: 0,
-                      child: Container(
-                        height: 40,
-                        width: 40,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          border: Border.all(
-                            width: 4,
-                            color: Colors.white,
-                          ),
-                          color: Colors.blue,
-                        ),
-                        child: Icon(
-                          Icons.edit,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
               SizedBox(height: 30),
               Container(
                 // padding: EdgeInsets.all(10),
@@ -139,29 +72,59 @@ class _EditproufileState extends State<Editproufile> {
                       return ListView.builder(
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (context, index) {
-                          // var Cin = snapshot.data!.docs[index]['CIN'];
-                          // var DateNais =
-                          //     snapshot.data!.docs[index]['Date Naissance'];
-                          // var Email = snapshot.data!.docs[index]['Email'];
-                          // var Fname = snapshot.data!.docs[index]['First name'];
-                          // var Lname = snapshot.data!.docs[index]['Last name'];
-                          // var Passw = snapshot.data!.docs[index]['Password'];
-                          // var Pnum = snapshot.data!.docs[index]['Phone Number'];
-                          // var Spec = snapshot.data!.docs[index]['Speciality'];
-                          // var Ville = snapshot.data!.docs[index]['Ville'];
-                          // var uid = snapshot.data!.docs[index]['uid'];
-
                           return Column(children: [
+                            Center(
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    width: 120,
+                                    height: 120,
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                            width: 4, color: Colors.white),
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: NetworkImage(
+                                            snapshot.data!.docs[index]['image'],
+                                          ),
+                                        )),
+                                  ),
+                                  Positioned(
+                                    bottom: 0,
+                                    right: 0,
+                                    child: Container(
+                                      height: 40,
+                                      width: 40,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        border: Border.all(
+                                          width: 4,
+                                          color: Colors.white,
+                                        ),
+                                        color: Colors.blue,
+                                      ),
+                                      child: Icon(
+                                        Icons.edit,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
                             Card(
                               child: ListTile(
                                 title: Text("First Name",
-                                    style: TextStyle(color: Colors.blue[200])),
+                                    style: TextStyle(color: Colors.blue)),
                                 subtitle: Text(
-                                    snapshot.data!.docs[index]['First name']),
+                                  snapshot.data!.docs[index]['First name'],
+                                  style: TextStyle(color: Colors.grey[800]),
+                                ),
                                 trailing: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      Icon(
+                                      const Icon(
                                         Icons.edit,
                                       ),
                                     ]),
@@ -171,92 +134,98 @@ class _EditproufileState extends State<Editproufile> {
                             Card(
                               child: ListTile(
                                   title: Text("Last Name :",
-                                      style:
-                                          TextStyle(color: Colors.blue[200])),
+                                      style: TextStyle(color: Colors.blue)),
                                   trailing: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Icon(Icons.edit),
                                       ]),
                                   subtitle: Text(
-                                      snapshot.data!.docs[index]['Last name'])),
+                                    snapshot.data!.docs[index]['Last name'],
+                                    style: TextStyle(color: Colors.grey[800]),
+                                  )),
                               elevation: 15,
                             ),
                             Card(
                               child: ListTile(
                                   title: Text("Email :",
-                                      style:
-                                          TextStyle(color: Colors.blue[200])),
+                                      style: TextStyle(color: Colors.blue)),
                                   trailing: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Icon(Icons.edit),
                                       ]),
                                   subtitle: Text(
-                                      snapshot.data!.docs[index]['Email'])),
+                                    snapshot.data!.docs[index]['Email'],
+                                    style: TextStyle(color: Colors.grey[800]),
+                                  )),
                               elevation: 15,
                             ),
                             Card(
                               child: ListTile(
                                   title: Text("UID :",
-                                      style:
-                                          TextStyle(color: Colors.blue[200])),
-                                  trailing: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(Icons.edit),
-                                      ]),
-                                  subtitle:
-                                      Text(snapshot.data!.docs[index]['uid'])),
-                              elevation: 15,
-                            ),
-                            Card(
-                              child: ListTile(
-                                  title: Text("CIN :",
-                                      style:
-                                          TextStyle(color: Colors.blue[200])),
-                                  trailing: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Icon(Icons.edit),
-                                      ]),
-                                  subtitle:
-                                      Text(snapshot.data!.docs[index]['CIN'])),
-                              elevation: 15,
-                            ),
-                            Card(
-                              child: ListTile(
-                                  title: Text("Password :",
-                                      style:
-                                          TextStyle(color: Colors.blue[200])),
+                                      style: TextStyle(color: Colors.blue)),
                                   trailing: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Icon(Icons.edit),
                                       ]),
                                   subtitle: Text(
-                                      snapshot.data!.docs[index]['Password'])),
+                                    snapshot.data!.docs[index]['uid'],
+                                    style: TextStyle(color: Colors.grey[800]),
+                                  )),
                               elevation: 15,
                             ),
                             Card(
                               child: ListTile(
-                                  title: Text("Phone Number :",
-                                      style:
-                                          TextStyle(color: Colors.blue[200])),
+                                  title: Text("CIN :",
+                                      style: TextStyle(color: Colors.blue)),
                                   trailing: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Icon(Icons.edit),
                                       ]),
-                                  subtitle: Text(snapshot.data!.docs[index]
-                                      ['Phone Number'])),
+                                  subtitle: Text(
+                                    snapshot.data!.docs[index]['CIN'],
+                                    style: TextStyle(color: Colors.grey[800]),
+                                  )),
+                              elevation: 15,
+                            ),
+                            Card(
+                              child: ListTile(
+                                  title: Text("Password :",
+                                      style: TextStyle(color: Colors.blue)),
+                                  trailing: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Icon(Icons.edit),
+                                      ]),
+                                  subtitle: Text(
+                                    snapshot.data!.docs[index]['Password'],
+                                    style: TextStyle(color: Colors.grey[800]),
+                                  )),
+                              elevation: 15,
+                            ),
+                            Card(
+                              child: ListTile(
+                                  title: Text("Phone Number :",
+                                      style: TextStyle(color: Colors.blue)),
+                                  trailing: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Icon(Icons.edit),
+                                      ]),
+                                  subtitle: Text(
+                                    snapshot.data!.docs[index]['Phone Number'],
+                                    style: TextStyle(color: Colors.grey[800]),
+                                  )),
                               elevation: 15,
                             ),
                             Card(
                               child: ListTile(
                                   title: Text(
                                     "Speciality : ",
-                                    style: TextStyle(color: Colors.blue[200]),
+                                    style: TextStyle(color: Colors.blue),
                                   ),
                                   trailing: Row(
                                       mainAxisSize: MainAxisSize.min,
@@ -265,22 +234,23 @@ class _EditproufileState extends State<Editproufile> {
                                       ]),
                                   subtitle: Text(
                                     snapshot.data!.docs[index]['Speciality'],
-                                    style: TextStyle(color: Colors.black),
+                                    style: TextStyle(color: Colors.grey[800]),
                                   )),
                               elevation: 15,
                             ),
                             Card(
                               child: ListTile(
                                   title: Text("Ville :",
-                                      style:
-                                          TextStyle(color: Colors.blue[200])),
+                                      style: TextStyle(color: Colors.blue)),
                                   trailing: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Icon(Icons.edit),
                                       ]),
                                   subtitle: Text(
-                                      snapshot.data!.docs[index]['Ville'])),
+                                    snapshot.data!.docs[index]['Ville'],
+                                    style: TextStyle(color: Colors.grey[800]),
+                                  )),
                               elevation: 15,
                             ),
                           ]);
@@ -291,9 +261,6 @@ class _EditproufileState extends State<Editproufile> {
                   },
                 ),
               ),
-              // SizedBox(height: 30),
-
-              //
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -326,11 +293,9 @@ class _EditproufileState extends State<Editproufile> {
                   )
                 ],
               ),
-
               SizedBox(
                 height: 40,
               ),
-
               ElevatedButton(
                   onPressed: () async {
                     if (FirebaseAuth.instance.currentUser != null) {
@@ -338,7 +303,6 @@ class _EditproufileState extends State<Editproufile> {
                     }
                   },
                   child: Text("signOut")),
-
               SizedBox(height: 50),
             ],
           ),

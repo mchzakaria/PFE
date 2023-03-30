@@ -21,4 +21,5 @@ export 'package:intl_phone_field/intl_phone_field.dart';
 export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:pfe/widget/helper.dart';
 export 'package:pfe/Pages/InfoPage.dart';
-
+export 'package:pfe/Pages/add.dart';
+export 'package:easy_search_bar/easy_search_bar.dart';

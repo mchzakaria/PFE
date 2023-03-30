@@ -147,25 +147,7 @@ class _SignupState extends State<Signup> {
                                           RegistrationPage.withCredentials(
                                             email: emailcontroller.text,
                                             password: passwordcontroller.text,
-                                          ))).then((value) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(
-                                      "Succesfully",
-                                      style: TextStyle(
-                                          color: Color.fromARGB(
-                                              255, 21, 225, 127)),
-                                    ),
-                                    action: SnackBarAction(
-                                      label: 'Undo',
-                                      onPressed: () {},
-                                    ),
-                                    backgroundColor:
-                                        Color.fromARGB(255, 7, 8, 8)
-                                            .withOpacity(0.1),
-                                  ),
-                                );
-                              });
+                                          )));
                             }
                           },
                           style: ButtonStyle(
