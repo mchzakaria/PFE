@@ -1,6 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:pfe/widget/widgets.dart';
 
+// ignore: non_constant_identifier_names
+String Lastname = "";
+// ignore: non_constant_identifier_names
+String Firstname = "";
+String img = "";
+
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
 
@@ -18,28 +24,19 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         leading: Image.asset("assets/images/clogo.png"),
-        title: Text("Profile Page",
+        title: const Text("Profile Page",
             style: TextStyle(color: Color.fromARGB(255, 96, 96, 96))),
         centerTitle: true,
-        actions: [
-          IconButton(
-            icon: Icon(
-              Icons.settings,
-              color: Colors.white,
-            ),
-            onPressed: () {},
-          )
-        ],
       ),
       body: Container(
-        padding: EdgeInsets.only(left: 15, top: 20, right: 15),
+        padding: const EdgeInsets.only(left: 15, top: 20, right: 15),
         child: GestureDetector(
           onTap: () {
             FocusScope.of(context).unfocus();
           },
           child: ListView(
             children: [
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               Container(
                 // padding: EdgeInsets.all(10),
                 // width: 350,
@@ -58,20 +55,23 @@ class _ProfilePageState extends State<ProfilePage> {
                       .snapshots(),
                   builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
                     if (snapshot.hasError) {
-                      return Text("Something Wrong Here");
+                      return const Text("Something Wrong Here");
                     }
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Center(
+                      return const Center(
                         child: CupertinoActivityIndicator(),
                       );
                     }
                     if (snapshot.data!.docs.isEmpty) {
-                      return Text("No data Found ");
+                      return const Text("No data Found ");
                     }
-                    if (snapshot != null && snapshot.data != null) {
+                    if (snapshot.data != null) {
                       return ListView.builder(
                         itemCount: snapshot.data!.docs.length,
                         itemBuilder: (context, index) {
+                          Firstname = snapshot.data!.docs[index]['First name'];
+                          Lastname = snapshot.data!.docs[index]['Last name'];
+                          img = snapshot.data!.docs[index]['image'];
                           return Column(children: [
                             Center(
                               child: Stack(
@@ -85,9 +85,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         shape: BoxShape.circle,
                                         image: DecorationImage(
                                           fit: BoxFit.cover,
-                                          image: NetworkImage(
-                                            snapshot.data!.docs[index]['image'],
-                                          ),
+                                          image: NetworkImage(img),
                                         )),
                                   ),
                                   Positioned(
@@ -104,7 +102,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         ),
                                         color: Colors.blue,
                                       ),
-                                      child: Icon(
+                                      child: const Icon(
                                         Icons.edit,
                                         color: Colors.white,
                                       ),
@@ -114,43 +112,44 @@ class _ProfilePageState extends State<ProfilePage> {
                               ),
                             ),
                             Card(
+                              elevation: 15,
                               child: ListTile(
-                                title: Text("First Name",
+                                title: const Text("First Name",
                                     style: TextStyle(color: Colors.blue)),
                                 subtitle: Text(
-                                  snapshot.data!.docs[index]['First name'],
+                                  Firstname,
                                   style: TextStyle(color: Colors.grey[800]),
                                 ),
-                                trailing: Row(
+                                trailing: const Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
-                                      const Icon(
+                                      Icon(
                                         Icons.edit,
                                       ),
                                     ]),
                               ),
-                              elevation: 15,
                             ),
                             Card(
+                              elevation: 15,
                               child: ListTile(
-                                  title: Text("Last Name :",
+                                  title: const Text("Last Name :",
                                       style: TextStyle(color: Colors.blue)),
-                                  trailing: Row(
+                                  trailing: const Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Icon(Icons.edit),
                                       ]),
                                   subtitle: Text(
-                                    snapshot.data!.docs[index]['Last name'],
+                                    Lastname,
                                     style: TextStyle(color: Colors.grey[800]),
                                   )),
-                              elevation: 15,
                             ),
                             Card(
+                              elevation: 15,
                               child: ListTile(
-                                  title: Text("Email :",
+                                  title: const Text("Email :",
                                       style: TextStyle(color: Colors.blue)),
-                                  trailing: Row(
+                                  trailing: const Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Icon(Icons.edit),
@@ -159,13 +158,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                     snapshot.data!.docs[index]['Email'],
                                     style: TextStyle(color: Colors.grey[800]),
                                   )),
-                              elevation: 15,
                             ),
                             Card(
+                              elevation: 15,
                               child: ListTile(
-                                  title: Text("UID :",
+                                  title: const Text("UID :",
                                       style: TextStyle(color: Colors.blue)),
-                                  trailing: Row(
+                                  trailing: const Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Icon(Icons.edit),
@@ -174,13 +173,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                     snapshot.data!.docs[index]['uid'],
                                     style: TextStyle(color: Colors.grey[800]),
                                   )),
-                              elevation: 15,
                             ),
                             Card(
+                              elevation: 15,
                               child: ListTile(
-                                  title: Text("CIN :",
+                                  title: const Text("CIN :",
                                       style: TextStyle(color: Colors.blue)),
-                                  trailing: Row(
+                                  trailing: const Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Icon(Icons.edit),
@@ -189,13 +188,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                     snapshot.data!.docs[index]['CIN'],
                                     style: TextStyle(color: Colors.grey[800]),
                                   )),
-                              elevation: 15,
                             ),
                             Card(
+                              elevation: 15,
                               child: ListTile(
-                                  title: Text("Password :",
+                                  title: const Text("Password :",
                                       style: TextStyle(color: Colors.blue)),
-                                  trailing: Row(
+                                  trailing: const Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Icon(Icons.edit),
@@ -204,13 +203,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                     snapshot.data!.docs[index]['Password'],
                                     style: TextStyle(color: Colors.grey[800]),
                                   )),
-                              elevation: 15,
                             ),
                             Card(
+                              elevation: 15,
                               child: ListTile(
-                                  title: Text("Phone Number :",
+                                  title: const Text("Phone Number :",
                                       style: TextStyle(color: Colors.blue)),
-                                  trailing: Row(
+                                  trailing: const Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Icon(Icons.edit),
@@ -219,15 +218,15 @@ class _ProfilePageState extends State<ProfilePage> {
                                     snapshot.data!.docs[index]['Phone Number'],
                                     style: TextStyle(color: Colors.grey[800]),
                                   )),
-                              elevation: 15,
                             ),
                             Card(
+                              elevation: 15,
                               child: ListTile(
-                                  title: Text(
+                                  title: const Text(
                                     "Speciality : ",
                                     style: TextStyle(color: Colors.blue),
                                   ),
-                                  trailing: Row(
+                                  trailing: const Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Icon(Icons.edit),
@@ -236,13 +235,13 @@ class _ProfilePageState extends State<ProfilePage> {
                                     snapshot.data!.docs[index]['Speciality'],
                                     style: TextStyle(color: Colors.grey[800]),
                                   )),
-                              elevation: 15,
                             ),
                             Card(
+                              elevation: 15,
                               child: ListTile(
-                                  title: Text("Ville :",
+                                  title: const Text("Ville :",
                                       style: TextStyle(color: Colors.blue)),
-                                  trailing: Row(
+                                  trailing: const Row(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         Icon(Icons.edit),
@@ -251,7 +250,6 @@ class _ProfilePageState extends State<ProfilePage> {
                                     snapshot.data!.docs[index]['Ville'],
                                     style: TextStyle(color: Colors.grey[800]),
                                   )),
-                              elevation: 15,
                             ),
                           ]);
                         },
@@ -266,34 +264,34 @@ class _ProfilePageState extends State<ProfilePage> {
                 children: [
                   OutlinedButton(
                     onPressed: () {},
-                    child: Text("Cancel",
+                    style: OutlinedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(horizontal: 50),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20))),
+                    child: const Text("Cancel",
                         style: TextStyle(
                           fontSize: 16,
                           letterSpacing: 2,
                           color: Colors.black,
                         )),
-                    style: OutlinedButton.styleFrom(
-                        padding: EdgeInsets.symmetric(horizontal: 50),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20))),
                   ),
                   ElevatedButton(
                     onPressed: () {},
-                    child: Text("SAVE",
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.blue,
+                        padding: const EdgeInsets.symmetric(horizontal: 50),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20))),
+                    child: const Text("SAVE",
                         style: TextStyle(
                           fontSize: 16,
                           letterSpacing: 2,
                           color: Colors.white,
                         )),
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.blue,
-                        padding: EdgeInsets.symmetric(horizontal: 50),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20))),
                   )
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 40,
               ),
               ElevatedButton(
@@ -302,8 +300,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       await FirebaseAuth.instance.signOut();
                     }
                   },
-                  child: Text("signOut")),
-              SizedBox(height: 50),
+                  child: const Text("signOut")),
+              const SizedBox(height: 50),
             ],
           ),
         ),

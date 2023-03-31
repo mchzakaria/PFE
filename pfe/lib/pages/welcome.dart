@@ -18,7 +18,7 @@ class Welcome extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 140,
                     ),
                     Text(
@@ -31,17 +31,17 @@ class Welcome extends StatelessWidget {
                     Image.asset("assets/images/clogo.png", width: 300),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Login()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const Login()));
                       },
                       style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.blue[400]),
                         padding: MaterialStateProperty.all(
-                            EdgeInsets.symmetric(horizontal: 79, vertical: 12)),
+                            const EdgeInsets.symmetric(horizontal: 79, vertical: 12)),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(27))),
                       ),
-                      child: Text(
+                      child: const Text(
                         "Login",
                         style: TextStyle(
                             fontSize: 23,
@@ -49,22 +49,22 @@ class Welcome extends StatelessWidget {
                             fontFamily: "myfont"),
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 22,
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>Signup()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const Signup()));
                       },
                       style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.blue[400]),
                         padding: MaterialStateProperty.all(
-                            EdgeInsets.symmetric(horizontal: 72, vertical: 12)),
+                            const EdgeInsets.symmetric(horizontal: 72, vertical: 12)),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(27))),
                       ),
-                      child: Text(
+                      child: const Text(
                         "Sign Up",
                         style: TextStyle(
                             fontSize: 22,

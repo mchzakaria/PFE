@@ -31,7 +31,7 @@ class _QuiSState extends State<QuiS> {
         body: SingleChildScrollView(
           child: Container(
             // padding: EdgeInsets.all(10),
-            margin: EdgeInsets.all(15),
+            margin: const EdgeInsets.all(15),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
             ),
@@ -63,7 +63,7 @@ class _QuiSState extends State<QuiS> {
                     },
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -73,19 +73,19 @@ class _QuiSState extends State<QuiS> {
                       buildIndicator(currentIndex == i)
                   ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
                 ),
                 Container(
                   width: 250,
                   height: 50,
-                  margin: EdgeInsets.only(left: 95),
-                  padding: EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(left: 95),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border:
-                        Border.all(color: Color.fromARGB(255, 233, 148, 248)),
-                    borderRadius: BorderRadius.only(
+                        Border.all(color: const Color.fromARGB(255, 233, 148, 248)),
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
                       bottomLeft: Radius.circular(20.0),
@@ -96,7 +96,7 @@ class _QuiSState extends State<QuiS> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: Offset(0, 3),
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
@@ -106,19 +106,19 @@ class _QuiSState extends State<QuiS> {
                     style: TextStyle(fontSize: 18.0, color: Colors.grey[800]),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
                   width: 250,
                   height: 50,
-                  margin: EdgeInsets.only(right: 80),
-                  padding: EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(right: 80),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border:
-                        Border.all(color: Color.fromARGB(255, 241, 163, 189)),
-                    borderRadius: BorderRadius.only(
+                        Border.all(color: const Color.fromARGB(255, 241, 163, 189)),
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
                       bottomLeft: Radius.circular(2.0),
@@ -129,7 +129,7 @@ class _QuiSState extends State<QuiS> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: Offset(0, 3),
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
@@ -139,19 +139,19 @@ class _QuiSState extends State<QuiS> {
                     style: TextStyle(fontSize: 18.0, color: Colors.grey[800]),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
                   width: 250,
                   height: 50,
-                  margin: EdgeInsets.only(left: 80),
-                  padding: EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(left: 80),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border:
-                        Border.all(color: Color.fromARGB(255, 233, 148, 248)),
-                    borderRadius: BorderRadius.only(
+                        Border.all(color: const Color.fromARGB(255, 233, 148, 248)),
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
                       bottomLeft: Radius.circular(20.0),
@@ -162,7 +162,7 @@ class _QuiSState extends State<QuiS> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: Offset(0, 3),
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
@@ -172,19 +172,19 @@ class _QuiSState extends State<QuiS> {
                     style: TextStyle(fontSize: 18.0, color: Colors.grey[800]),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
                   width: 250,
                   height: 120,
-                  margin: EdgeInsets.only(right: 80),
-                  padding: EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(right: 80),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border:
-                        Border.all(color: Color.fromARGB(255, 241, 163, 189)),
-                    borderRadius: BorderRadius.only(
+                        Border.all(color: const Color.fromARGB(255, 241, 163, 189)),
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
                       bottomLeft: Radius.circular(2.0),
@@ -195,7 +195,7 @@ class _QuiSState extends State<QuiS> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: Offset(0, 3),
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
@@ -208,19 +208,19 @@ class _QuiSState extends State<QuiS> {
                     style: TextStyle(fontSize: 18.0, color: Colors.grey[800]),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
                   width: 250,
                   height: 80,
-                  margin: EdgeInsets.only(left: 80),
-                  padding: EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(left: 80),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border:
-                        Border.all(color: Color.fromARGB(255, 233, 148, 248)),
-                    borderRadius: BorderRadius.only(
+                        Border.all(color: const Color.fromARGB(255, 233, 148, 248)),
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
                       bottomLeft: Radius.circular(20.0),
@@ -231,7 +231,7 @@ class _QuiSState extends State<QuiS> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: Offset(0, 3),
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
@@ -241,19 +241,19 @@ class _QuiSState extends State<QuiS> {
                     style: TextStyle(fontSize: 18.0, color: Colors.grey[800]),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
                   width: 250,
                   height: 180,
-                  margin: EdgeInsets.only(right: 80),
-                  padding: EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(right: 80),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border:
-                        Border.all(color: Color.fromARGB(255, 241, 163, 189)),
-                    borderRadius: BorderRadius.only(
+                        Border.all(color: const Color.fromARGB(255, 241, 163, 189)),
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
                       bottomLeft: Radius.circular(2.0),
@@ -264,7 +264,7 @@ class _QuiSState extends State<QuiS> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: Offset(0, 3),
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
@@ -274,19 +274,19 @@ class _QuiSState extends State<QuiS> {
                     style: TextStyle(fontSize: 18.0, color: Colors.grey[800]),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
                   width: 250,
                   height: 100,
-                  margin: EdgeInsets.only(left: 80),
-                  padding: EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(left: 80),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border:
-                        Border.all(color: Color.fromARGB(255, 233, 148, 248)),
-                    borderRadius: BorderRadius.only(
+                        Border.all(color: const Color.fromARGB(255, 233, 148, 248)),
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
                       bottomLeft: Radius.circular(20.0),
@@ -297,7 +297,7 @@ class _QuiSState extends State<QuiS> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: Offset(0, 3),
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
@@ -307,19 +307,19 @@ class _QuiSState extends State<QuiS> {
                     style: TextStyle(fontSize: 18.0, color: Colors.grey[800]),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
                   width: 250,
                   height: 180,
-                  margin: EdgeInsets.only(right: 80),
-                  padding: EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(right: 80),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border:
-                        Border.all(color: Color.fromARGB(255, 233, 137, 169)),
-                    borderRadius: BorderRadius.only(
+                        Border.all(color: const Color.fromARGB(255, 233, 137, 169)),
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
                       bottomLeft: Radius.circular(2.0),
@@ -330,7 +330,7 @@ class _QuiSState extends State<QuiS> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: Offset(0, 3),
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
@@ -340,19 +340,19 @@ class _QuiSState extends State<QuiS> {
                     style: TextStyle(fontSize: 18.0, color: Colors.grey[800]),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
                   width: 250,
                   height: 80,
-                  margin: EdgeInsets.only(left: 80),
-                  padding: EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(left: 80),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border:
-                        Border.all(color: Color.fromARGB(255, 234, 164, 246)),
-                    borderRadius: BorderRadius.only(
+                        Border.all(color: const Color.fromARGB(255, 234, 164, 246)),
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
                       bottomLeft: Radius.circular(20.0),
@@ -363,7 +363,7 @@ class _QuiSState extends State<QuiS> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: Offset(0, 3),
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),
@@ -373,19 +373,19 @@ class _QuiSState extends State<QuiS> {
                     style: TextStyle(fontSize: 18.0, color: Colors.grey[800]),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
                   width: 250,
                   height: 270,
-                  margin: EdgeInsets.only(right: 80),
-                  padding: EdgeInsets.all(10),
+                  margin: const EdgeInsets.only(right: 80),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     border:
-                        Border.all(color: Color.fromARGB(255, 241, 163, 189)),
-                    borderRadius: BorderRadius.only(
+                        Border.all(color: const Color.fromARGB(255, 241, 163, 189)),
+                    borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(20.0),
                       topRight: Radius.circular(30.0),
                       bottomLeft: Radius.circular(2.0),
@@ -396,7 +396,7 @@ class _QuiSState extends State<QuiS> {
                         color: Colors.grey.withOpacity(0.5),
                         spreadRadius: 2,
                         blurRadius: 5,
-                        offset: Offset(0, 3),
+                        offset: const Offset(0, 3),
                       ),
                     ],
                   ),

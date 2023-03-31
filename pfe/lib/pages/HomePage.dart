@@ -12,11 +12,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   // final user = FirebaseAuth.instance.currentUser!;
 
-  // String formateddate(timestamp) {
-  //   var datefromtimestamp =
-  //       DateTime.fromMillisecondsSinceEpoch(timestamp.seconds * 1000);
-  //   return DateFormat('dd-MM-yyyy').format(datefromtimestamp);
-  // }
+  String formateddate(timestamp) {
+    var datefromtimestamp =
+        DateTime.fromMillisecondsSinceEpoch(timestamp.seconds * 1000);
+    return DateFormat.yMMMMd('en_US').format(datefromtimestamp);
+  }
 
   String searchValue = "";
 
@@ -54,57 +54,6 @@ class _HomePageState extends State<HomePage> {
         body: SingleChildScrollView(
           child: Column(
             children: [
-              // Container(
-              //   decoration: BoxDecoration(
-              //     borderRadius: BorderRadius.circular(10),
-              //     color: Color.fromARGB(255, 200, 226, 245),
-              //     border: Border.all(
-              //       color: Color.fromARGB(255, 48, 159, 250),
-              //       width: 3,
-              //     ),
-              //   ),
-              //   padding: EdgeInsets.all(5),
-              //   margin: EdgeInsets.all(10),
-              //   // margin: EdgeInsets.only(top: 5),
-              //   width: 370,
-              //   height: 118,
-              //   child: Column(
-              //     children: [
-              //       Row(
-              //         children: [
-              //           Container(
-              //             child: CircleAvatar(),
-              //             margin: EdgeInsets.only(left: 10),
-              //           ),
-              //           Container(
-              //             margin: EdgeInsets.only(left: 15),
-              //             width: 200,
-              //             child: TextField(
-              //               decoration: InputDecoration(
-              //                 border: UnderlineInputBorder(),
-              //                 hintText: "feel free to write your Date_creation?",
-              //               ),
-              //             ),
-              //           ),
-              //         ],
-              //       ),
-              //       SizedBox(
-              //         height: 12,
-              //       ),
-              //       Container(
-              //         padding: EdgeInsets.only(left: 240, top: 8),
-              //         child: ElevatedButton(
-              //           style: ButtonStyle(),
-              //           onPressed: () {},
-              //           child: const Text('Publier'),
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // SizedBox(
-              //   height: 10,
-              // ),
               SizedBox(
                 height: 10,
               ),
@@ -130,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                         if (snapshot.data!.docs.isEmpty) {
                           return Text("No data Found ");
                         }
-                        if (snapshot != null && snapshot.data != null) {
+                        if (snapshot.data != null) {
                           return ListView.builder(
                               itemCount: snapshot.data!.docs.length,
                               itemBuilder: (context, index) {
@@ -145,7 +94,11 @@ class _HomePageState extends State<HomePage> {
                                             Container(
                                               margin: EdgeInsets.only(
                                                   left: 6, top: 3, bottom: 0),
-                                              child: CircleAvatar(),
+                                              child: CircleAvatar(
+                                                  child: Image.network(
+                                                snapshot.data!.docs[index]
+                                                    ['image'],
+                                              )),
                                             ),
                                             Container(
                                               margin: EdgeInsets.only(left: 7),
@@ -165,14 +118,12 @@ class _HomePageState extends State<HomePage> {
                                           indent: 40,
                                           endIndent: 20,
                                         ),
-                                        Container(
-                                          child: Text(
-                                            snapshot.data!.docs[index]
-                                                ['Domaine'],
-                                            style: TextStyle(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold),
-                                          ),
+                                        Text(
+                                          snapshot.data!.docs[index]
+                                              ['Domaine'],
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.bold),
                                         ),
                                         SizedBox(
                                           height: 5,
@@ -182,12 +133,11 @@ class _HomePageState extends State<HomePage> {
                                           child: Text(snapshot.data!.docs[index]
                                               ['Post']),
                                         ),
-                                        // Container(
-                                        //   margin: EdgeInsets.only(left: 4),
-                                        //   child: Text(formateddate(snapshot
-                                        //       .data!
-                                        //       .docs[index]['Date_creation'])),
-                                        // ),
+                                        Container(
+                                            margin: EdgeInsets.only(left: 4),
+                                            child: Text(formateddate(
+                                                snapshot.data!.docs[index]
+                                                    ['date_creation']))),
                                       ],
                                     ),
                                   ),
@@ -210,4 +160,4 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-//
+

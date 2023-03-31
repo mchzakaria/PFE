@@ -1,12 +1,12 @@
 import 'package:pfe/widget/widgets.dart';
 import 'package:intl/intl.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class RegistrationPage extends StatefulWidget {
+
   RegistrationPage({super.key});
 
   String? email, password;
-  RegistrationPage.withCredentials({
+  RegistrationPage.withCredentials({super.key, 
     required this.email,
     required this.password,
   });
@@ -22,18 +22,23 @@ class _RegistrationPageState extends State<RegistrationPage> {
   String dropdownValue = "Informatique";
 
   // Controllers :
-  TextEditingController _date = TextEditingController();
-  TextEditingController lastname = new TextEditingController();
-  TextEditingController first_name = new TextEditingController();
-  TextEditingController DateNaissance = new TextEditingController();
-  TextEditingController CIN = new TextEditingController();
-  TextEditingController Ville = new TextEditingController();
-  TextEditingController Phone_Number = new TextEditingController();
-  TextEditingController Speciality = new TextEditingController();
+  TextEditingController lastname = TextEditingController();
+  // ignore: non_constant_identifier_names
+  TextEditingController first_name = TextEditingController();
+  // ignore: non_constant_identifier_names
+  TextEditingController DateNaissance = TextEditingController();
+  // ignore: non_constant_identifier_names
+  TextEditingController CIN = TextEditingController();
+  // ignore: non_constant_identifier_names
+  TextEditingController Ville = TextEditingController();
+  // ignore: non_constant_identifier_names
+  TextEditingController Phone_Number = TextEditingController();
+  // ignore: non_constant_identifier_names
+  TextEditingController Speciality = TextEditingController();
 
   // email and password controllers :
-  TextEditingController _textemailController = new TextEditingController();
-  TextEditingController _textpassController = new TextEditingController();
+  TextEditingController _textemailController = TextEditingController();
+  TextEditingController _textpassController = TextEditingController();
 
   @override
   void initState() {
@@ -43,28 +48,22 @@ class _RegistrationPageState extends State<RegistrationPage> {
   }
 
   var img;
-  String imageshow(dropdowna) {
-    if (dropdowna == "Informatique") {
-      return 'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/job.png?alt=media&token=2f9898cc-1af9-474a-9e68-23b313ba301a';
-    } else {
-      return 'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/LOGO.PNG?alt=media&token=b7e68cf5-6d3b-439a-90ff-8a85b74fb733';
-    }
-  }
+  
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        backgroundColor: const Color.fromARGB(255, 255, 255, 255),
         foregroundColor: Colors.black,
       ),
       body: SingleChildScrollView(
         child: Stack(
           children: [
             Container(
-              margin: EdgeInsets.fromLTRB(25, 20, 25, 10),
-              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+              margin: const EdgeInsets.fromLTRB(25, 20, 25, 10),
+              padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
               alignment: Alignment.center,
               child: Column(
                 children: [
@@ -73,20 +72,6 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        // GestureDetector(
-                        //   child: Stack(
-                        //     children: [
-                        //       Container(
-                        //         child: Text("Remplir les infos please"),
-                        //       ),
-                        //     ],
-                        //   ),
-                        // ),
-
-                        // SizedBox(
-                        //   height: 20,
-                        // ),
-
                         Container(
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                           child: TextFormField(
@@ -102,7 +87,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           ),
                         ),
 
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
 
@@ -121,26 +106,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           ),
                         ),
 
-                        SizedBox(height: 20.0),
-
-                        // Container(
-                        //   child: TextFormField(
-                        //     decoration: ThemeHelper().textInputDecoration(
-                        //         "E-mail address", "exemple@gmail.com"),
-                        //     keyboardType: TextInputType.emailAddress,
-                        //     validator: (val) {
-                        //       if (!(val!.isEmpty) &&
-                        //           !RegExp(r"^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,253}[a-zA-Z0-9])?)*$")
-                        //               .hasMatch(val)) {
-                        //         return "Enter a valid email address";
-                        //       }
-                        //       return null;
-                        //     },
-                        //   ),
-                        //   decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                        // ),
-                        // SizedBox(height: 20.0),
-
+                        const SizedBox(height: 20.0),
                         Container(
                           // ignore: sort_child_properties_last
                           child: TextFormField(
@@ -173,7 +139,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
                         ),
 
-                        SizedBox(height: 20.0),
+                        const SizedBox(height: 20.0),
 
                         Container(
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
@@ -190,7 +156,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           ),
                         ),
 
-                        SizedBox(height: 20.0),
+                        const SizedBox(height: 20.0),
 
                         Container(
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
@@ -207,7 +173,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           ),
                         ),
 
-                        SizedBox(height: 20.0),
+                        const SizedBox(height: 20.0),
 
                         Container(
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
@@ -224,7 +190,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           ),
                         ),
 
-                        SizedBox(height: 20.0),
+                        const SizedBox(height: 20.0),
 
                         Container(
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
@@ -241,23 +207,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           ),
                         ),
 
-                        SizedBox(height: 10.0),
-
-                        // Container(
-                        //   child: TextFormField(
-                        //     decoration: ThemeHelper().textInputDecoration(
-                        //         "Mobile Number", "Mobile Number"),
-                        //     keyboardType: TextInputType.datetime,
-                        //     validator: (value) {
-                        //       if (value!.isEmpty) {
-                        //         return 'Please enter your mobile number';
-                        //       } else {
-                        //         return null;
-                        //       }
-                        //     },
-                        //   ),
-                        //   decoration: ThemeHelper().inputBoxDecorationShaddow(),
-                        // ),
+                        const SizedBox(height: 10.0),
 
                         Container(
                           decoration: ThemeHelper().inputBoxDecorationShaddow(),
@@ -274,7 +224,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           ),
                         ),
 
-                        SizedBox(height: 10.0),
+                        const SizedBox(height: 10.0),
 
                         // Container(
                         //   decoration: ThemeHelper().inputBoxDecorationShaddow(),
@@ -296,75 +246,72 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           children: [
                             SizedBox(
                               width: 200,
-                              child: Container(
-                                // margin: EdgeInsets.only(left: 20),
-                                child: DropdownButton<String>(
-                                  alignment: Alignment.center,
-                                  value: dropdownValue,
-                                  onChanged: (newValue) {
-                                    setState(() {
-                                      dropdownValue = newValue!;
-                                    });
+                              child: DropdownButton<String>(
+                                alignment: Alignment.center,
+                                value: dropdownValue,
+                                onChanged: (newValue) {
+                                  setState(() {
+                                    dropdownValue = newValue!;
+                                  });
 
-                                    if (dropdownValue == "Economique") {
-                                      img =
-                                          'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/economique.jpg?alt=media&token=fe621a60-65b8-47ce-a543-b509245de3ea';
-                                    } else if (dropdownValue ==
-                                        "Industrielle") {
-                                      img =
-                                          'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/industruelle.jpg?alt=media&token=832f49ed-8460-437d-8e97-c78678b2b3f7';
-                                    } else if (dropdownValue ==
-                                        "Industrielle") {
-                                      img =
-                                          'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/industruelle.jpg?alt=media&token=832f49ed-8460-437d-8e97-c78678b2b3f7';
-                                    } else if (dropdownValue ==
-                                        "Informatique") {
-                                      img =
-                                          'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/informatique.jpg?alt=media&token=a7118dea-009d-4fc2-a0fd-8be36f8ef073';
-                                    } else if (dropdownValue == "Juridique") {
-                                      img =
-                                          'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/juridique.jpg?alt=media&token=8c47b059-ec83-427e-a3ef-4c3a56a516f4';
-                                    } else if (dropdownValue == "Autre") {
-                                      img =
-                                          'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/other.jpg?alt=media&token=162ae965-8f1d-4e40-baaf-e2b76de8c5b9';
-                                    } else if (dropdownValue == "Sanitaire") {
-                                      img =
-                                          'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/sanitaire.jpg?alt=media&token=086c769e-97ee-4462-996c-4ae4bb28176c';
-                                    }
-                                  },
-                                  items: <String>[
-                                    'Informatique',
-                                    'Industrielle',
-                                    'Economique',
-                                    'Sanitaire',
-                                    'Juridique',
-                                    'Autre',
-                                  ].map<DropdownMenuItem<String>>(
-                                      (String value) {
-                                    return DropdownMenuItem<String>(
-                                      value: value,
-                                      child: Text(value),
-                                    );
-                                  }).toList(),
-                                  style: TextStyle(
-                                    color: Colors.grey[800],
-                                    fontSize: 16,
-                                  ),
-                                  icon: Icon(
-                                    Icons.arrow_drop_down,
-                                    color: Colors.grey[800],
-                                  ),
-                                  underline: Container(
-                                    height: 2,
-                                    color: Colors.grey[800],
-                                  ),
+                                  if (dropdownValue == "Economique") {
+                                    img =
+                                        'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/economique.jpg?alt=media&token=fe621a60-65b8-47ce-a543-b509245de3ea';
+                                  } else if (dropdownValue ==
+                                      "Industrielle") {
+                                    img =
+                                        'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/industruelle.jpg?alt=media&token=832f49ed-8460-437d-8e97-c78678b2b3f7';
+                                  } else if (dropdownValue ==
+                                      "Industrielle") {
+                                    img =
+                                        'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/industruelle.jpg?alt=media&token=832f49ed-8460-437d-8e97-c78678b2b3f7';
+                                  } else if (dropdownValue ==
+                                      "Informatique") {
+                                    img =
+                                        'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/informatique.jpg?alt=media&token=a7118dea-009d-4fc2-a0fd-8be36f8ef073';
+                                  } else if (dropdownValue == "Juridique") {
+                                    img =
+                                        'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/juridique.jpg?alt=media&token=8c47b059-ec83-427e-a3ef-4c3a56a516f4';
+                                  } else if (dropdownValue == "Autre") {
+                                    img =
+                                        'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/other.jpg?alt=media&token=162ae965-8f1d-4e40-baaf-e2b76de8c5b9';
+                                  } else if (dropdownValue == "Sanitaire") {
+                                    img =
+                                        'https://firebasestorage.googleapis.com/v0/b/isearchpfe.appspot.com/o/sanitaire.jpg?alt=media&token=086c769e-97ee-4462-996c-4ae4bb28176c';
+                                  }
+                                },
+                                items: <String>[
+                                  'Informatique',
+                                  'Industrielle',
+                                  'Economique',
+                                  'Sanitaire',
+                                  'Juridique',
+                                  'Autre',
+                                ].map<DropdownMenuItem<String>>(
+                                    (String value) {
+                                  return DropdownMenuItem<String>(
+                                    value: value,
+                                    child: Text(value),
+                                  );
+                                }).toList(),
+                                style: TextStyle(
+                                  color: Colors.grey[800],
+                                  fontSize: 16,
+                                ),
+                                icon: Icon(
+                                  Icons.arrow_drop_down,
+                                  color: Colors.grey[800],
+                                ),
+                                underline: Container(
+                                  height: 2,
+                                  color: Colors.grey[800],
                                 ),
                               ),
                             ),
                           ],
                         ),
 
-                        SizedBox(height: 15.0),
+                        const SizedBox(height: 15.0),
 
                         FormField<bool>(
                           builder: (state) {
@@ -380,7 +327,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                             state.didChange(value);
                                           });
                                         }),
-                                    Text(
+                                    const Text(
                                       "I accept all terms and conditions.",
                                       style: TextStyle(color: Colors.grey),
                                     ),
@@ -409,47 +356,11 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           },
                         ),
 
-                        SizedBox(height: 20.0),
-
-                        // Container(
-                        //   decoration:
-                        //       ThemeHelper().buttonBoxDecoration(context),
-                        //   child: ElevatedButton(
-                        //     style: ThemeHelper().buttonStyle(),
-                        //     child: Padding(
-                        //       padding:
-                        //           const EdgeInsets.fromLTRB(40, 10, 40, 10),
-                        //       child: Text(
-                        //         "Register".toUpperCase(),
-                        //         style: TextStyle(
-                        //           fontSize: 20,
-                        //           fontWeight: FontWeight.bold,
-                        //           color: Colors.white,
-                        //         ),
-                        //       ),
-                        //     ),
-                        //     onPressed: checkboxValue == true
-                        //         ? () {
-                        //             // if (_formKey.currentState!.validate()) {
-                        //             //   Navigator.of(context).pushAndRemoveUntil(
-                        //             //       MaterialPageRoute(
-                        //             //           builder: (context) => ProfilePage()
-                        //             //       ),
-                        //             //           (Route<dynamic> route) => false
-                        //             //   );
-                        //             // }
-                        //           }
-                        //         : null,
-                        //   ),
-                        // ),
+                        const SizedBox(height: 20.0),
 
                         ElevatedButton(
                           onPressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              // setState(() {
-                              //   _feedbackText = 'Processing data';
-                              //   //Navigate to Home Page
-                              // });
                               try {
                                 UserCredential userCredential =
                                     await FirebaseAuth.instance
@@ -475,7 +386,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                   'CIN': CIN.text,
                                   'Ville': Ville.text,
                                   'Phone Number': Phone_Number.text,
-                                  'Speciality': Speciality.text,
+                                  'Speciality': dropdownValue.toString(),
                                   'image': img,
                                 });
                                 print(
@@ -492,7 +403,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                                   SnackBar(
                                     content: Text(
                                       e.message ?? "error",
-                                      style: TextStyle(color: Colors.red),
+                                      style: const TextStyle(color: Colors.red),
                                     ),
                                     action: SnackBarAction(
                                       label: 'Undo',
@@ -506,12 +417,12 @@ class _RegistrationPageState extends State<RegistrationPage> {
                             }
                             ;
                           },
-                          child: Text('Submit'),
                           style: ButtonStyle(
                             elevation: MaterialStateProperty.all(15),
                           ),
+                          child: const Text('Submit'),
                         ),
-                        SizedBox(height: 10.0),
+                        const SizedBox(height: 10.0),
                       ],
                     ),
                   ),

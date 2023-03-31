@@ -4,6 +4,8 @@ import 'package:pfe/widget/widgets.dart';
 //   runApp(LoadingPage());
 // }
 class LoadingPage extends StatelessWidget {
+  const LoadingPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,26 +14,29 @@ class LoadingPage extends StatelessWidget {
         primarySwatch: Colors.indigo,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  @override
   void initState() {
-    // TODO: implement initState
     super.initState();
-    Timer(Duration(seconds: 2),
+    Timer(const Duration(seconds: 2),
         navigationToNextPage); // calling startSplashScreenTimer method,to start the timer
   }
 
   void navigationToNextPage() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Welcome()));
+    Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
   }
 
   @override
@@ -44,14 +49,14 @@ class _MyHomePageState extends State<MyHomePage> {
               "assets/images/clogo.png",
               width: 900,
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
-            CircularProgressIndicator(
+            const CircularProgressIndicator(
               backgroundColor: Colors.white,
             ),
             Container(
-                padding: EdgeInsets.only(top: 20, bottom: 50),
+                padding: const EdgeInsets.only(top: 20, bottom: 50),
                 child: Text(
                   'Loading ... ',
                   style: TextStyle(color: Colors.grey[900], fontSize: 25),

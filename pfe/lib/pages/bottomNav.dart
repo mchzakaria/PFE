@@ -1,5 +1,4 @@
-// ignore_for_file: prefer_const_constructors
-
+// ignore: file_names
 import 'package:pfe/widget/widgets.dart';
 
 class BottomNav extends StatefulWidget {
@@ -10,7 +9,8 @@ class BottomNav extends StatefulWidget {
 
 class _BottomNavState extends State<BottomNav> {
   int _selectedIndex = 0;
-  final List Screens = [HomePage(), Recherche(), adds(), QuiS(), ProfilePage()];
+  // ignore: non_constant_identifier_names
+  final List Screens = [const HomePage(), const Recherche(), const adds(), const QuiS(), const ProfilePage()];
   // Widget currentScreen = HomePage();
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class _BottomNavState extends State<BottomNav> {
       home: Scaffold(
         bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: Colors.blueAccent,
-          items: <Widget>[
+          items: const <Widget>[
             Icon(Icons.home, size: 30),
             Icon(Icons.search , size: 30),
             Icon(Icons.add, size: 30),

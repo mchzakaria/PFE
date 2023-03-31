@@ -16,14 +16,16 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
     super.dispose();
   }
 
+  // ignore: non_constant_identifier_names
   Future PasswordReset() async {
     try {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: emailcontroller.text.trim());
+      // ignore: use_build_context_synchronously
       showDialog(
           context: context,
           builder: (context) {
-            return AlertDialog(
+            return const AlertDialog(
               content: Text("Password Reset sen't, Check your email"),
             );
           });    
@@ -46,8 +48,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
         elevation: 0,
       ),
       body: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 25.0),
+        const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 25.0),
           child: Text(
             "Enter Your Email To reset Your Password",
             textAlign: TextAlign.center,
@@ -55,7 +57,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           ),
         ),
 
-        SizedBox(
+        const SizedBox(
           height: 10,
         ),
 
@@ -66,7 +68,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
             borderRadius: BorderRadius.circular(66),
           ),
           width: 266,
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: TextField(
             controller: emailcontroller,
             decoration: InputDecoration(
@@ -79,12 +81,12 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
           ),
         ),
 
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
 
         MaterialButton(
           onPressed: PasswordReset,
-          child: Text("Reset Password"),
           color: Colors.blue[200],
+          child: const Text("Reset Password"),
         )
       ]),
     );

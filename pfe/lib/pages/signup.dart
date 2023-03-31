@@ -8,23 +8,12 @@ class Signup extends StatefulWidget {
 }
 
 class _SignupState extends State<Signup> {
-  final emailcontroller = new TextEditingController();
-  final passwordcontroller = new TextEditingController();
+  final emailcontroller = TextEditingController();
+  final passwordcontroller =  TextEditingController();
 
   // form
   final _formKey = GlobalKey<FormState>();
   bool _obscureText = true;
-
-  // void signup() async {
-  //   Auth auth = Auth();
-  //   try {
-  //     await auth..registerNewUser(email: , password: );
-  //   } on FirebaseAuthException catch (e) {
-  //     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-  //       content: Text(e.message ?? "error"),
-  //     ));
-  //   }
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +33,7 @@ class _SignupState extends State<Signup> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 80,
                         ),
                         Text(
@@ -54,14 +43,14 @@ class _SignupState extends State<Signup> {
                               fontFamily: "myfont",
                               color: Colors.grey[800]),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 24,
                         ),
                         Image.asset(
                           "assets/images/clogo.png",
                           // height: 222,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 27,
                         ),
                         Container(
@@ -70,7 +59,7 @@ class _SignupState extends State<Signup> {
                             borderRadius: BorderRadius.circular(66),
                           ),
                           width: 266,
-                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
                           child: TextFormField(
                             controller: emailcontroller,
                             decoration: InputDecoration(
@@ -91,7 +80,7 @@ class _SignupState extends State<Signup> {
                             },
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 23,
                         ),
                         Container(
@@ -100,7 +89,7 @@ class _SignupState extends State<Signup> {
                             borderRadius: BorderRadius.circular(66),
                           ),
                           width: 266,
-                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
                           child: TextFormField(
                             controller: passwordcontroller,
                             obscureText: _obscureText,
@@ -134,7 +123,7 @@ class _SignupState extends State<Signup> {
                             },
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 22,
                         ),
                         ElevatedButton(
@@ -154,24 +143,24 @@ class _SignupState extends State<Signup> {
                             backgroundColor:
                                 MaterialStateProperty.all(Colors.blue[400]),
                             padding: MaterialStateProperty.all(
-                                EdgeInsets.symmetric(
+                                const EdgeInsets.symmetric(
                                     horizontal: 93, vertical: 12)),
                             shape: MaterialStateProperty.all(
                                 RoundedRectangleBorder(
                                     borderRadius: BorderRadius.circular(27))),
                           ),
-                          child: Text(
+                          child: const Text(
                             "Sign up",
                             style: TextStyle(fontSize: 22),
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 28,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
+                            const Text(
                               "Already have an account? ",
                               style: TextStyle(
                                 fontSize: 15,
@@ -182,9 +171,9 @@ class _SignupState extends State<Signup> {
                                 Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => Login()));
+                                        builder: (context) => const Login()));
                               },
-                              child: Text(
+                              child: const Text(
                                 " Log in",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
@@ -193,7 +182,7 @@ class _SignupState extends State<Signup> {
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 17,
                         ),
                       ],

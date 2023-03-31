@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:pfe/widget/widgets.dart';
-import '../auth/auth.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
