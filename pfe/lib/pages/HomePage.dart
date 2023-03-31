@@ -18,6 +18,14 @@ class _HomePageState extends State<HomePage> {
     return DateFormat.yMMMMd('en_US').format(datefromtimestamp);
   }
 
+  bool _isFavorited = false;
+
+  void _toggleFavorite() {
+    setState(() {
+      _isFavorited = !_isFavorited;
+    });
+  }
+
   String searchValue = "";
 
   List<String> suggestions = [
@@ -60,7 +68,7 @@ class _HomePageState extends State<HomePage> {
               Container(
                   padding: EdgeInsets.all(10),
                   width: 350,
-                  height: 490,
+                  height: 800,
                   child: StreamBuilder(
                       stream: FirebaseFirestore.instance
                           .collection("Publication")
@@ -85,8 +93,13 @@ class _HomePageState extends State<HomePage> {
                               itemBuilder: (context, index) {
                                 return Column(children: [
                                   Container(
-                                    width: 600,
-                                    color: Color.fromARGB(255, 246, 247, 247),
+                                    padding: EdgeInsets.all(10),
+                                    width: 650,
+                                    decoration: BoxDecoration(
+                                        color:
+                                            Color.fromARGB(255, 246, 247, 247),
+                                        borderRadius:
+                                            BorderRadius.circular(15)),
                                     child: Column(
                                       children: [
                                         Row(
@@ -94,50 +107,78 @@ class _HomePageState extends State<HomePage> {
                                             Container(
                                               margin: EdgeInsets.only(
                                                   left: 6, top: 3, bottom: 0),
-                                              child: CircleAvatar(
-                                                  child: Image.network(
-                                                snapshot.data!.docs[index]
-                                                    ['image'],
-                                              )),
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(50),
+                                                child: Image.network(
+                                                  snapshot.data!.docs[index]
+                                                      ['image'],
+                                                  fit: BoxFit.cover,
+                                                  width: 45,
+                                                  height: 45,
+                                                ),
+                                              ),
                                             ),
                                             Container(
-                                              margin: EdgeInsets.only(left: 7),
+                                              margin: EdgeInsets.only(left: 6),
                                               child: Text(
                                                 snapshot.data!.docs[index]
                                                     ['Name'],
                                                 style: TextStyle(
-                                                  fontSize: 16,
+                                                  fontSize: 18,
+                                                  color: Colors.black,
                                                 ),
                                               ),
                                             ),
+                                            Container(
+                                                margin:
+                                                    EdgeInsets.only(left: 55),
+                                                child: Text(
+                                                  formateddate(
+                                                      snapshot.data!.docs[index]
+                                                          ['date_creation']),
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                  ),
+                                                )),
                                           ],
                                         ),
-                                        Divider(
-                                          color: Colors.grey,
-                                          thickness: 1,
-                                          indent: 40,
-                                          endIndent: 20,
+                                        Container(
+                                          margin: EdgeInsets.all(2),
+                                          child: Divider(
+                                            color: const Color.fromARGB(
+                                                255, 128, 125, 125),
+                                            height: 2,
+                                            thickness: 0.5,
+                                            indent: 50,
+                                            endIndent: 10,
+                                          ),
                                         ),
                                         Text(
-                                          snapshot.data!.docs[index]
-                                              ['Domaine'],
+                                          snapshot.data!.docs[index]['Domaine'],
                                           style: TextStyle(
                                               fontSize: 16,
                                               fontWeight: FontWeight.bold),
                                         ),
-                                        SizedBox(
-                                          height: 5,
-                                        ),
                                         Container(
-                                          margin: EdgeInsets.only(left: 4),
+                                          margin: EdgeInsets.all(10),
                                           child: Text(snapshot.data!.docs[index]
                                               ['Post']),
                                         ),
-                                        Container(
-                                            margin: EdgeInsets.only(left: 4),
-                                            child: Text(formateddate(
-                                                snapshot.data!.docs[index]
-                                                    ['date_creation']))),
+                                        Row(
+                                          children: [
+                                            GestureDetector(
+                                                onTap: _toggleFavorite,
+                                                child: Icon(
+                                                  _isFavorited
+                                                      ? Icons.favorite
+                                                      : Icons.favorite_border,
+                                                  color: _isFavorited
+                                                      ? Colors.red
+                                                      : Colors.grey,
+                                                )),
+                                          ],
+                                        )
                                       ],
                                     ),
                                   ),
@@ -159,5 +200,3 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
-
-

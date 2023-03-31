@@ -7,6 +7,7 @@ class Welcome extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
         child: MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: SizedBox(
           width: double.infinity,
@@ -31,13 +32,17 @@ class Welcome extends StatelessWidget {
                     Image.asset("assets/images/clogo.png", width: 300),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const Login()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Login()));
                       },
                       style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.blue[400]),
                         padding: MaterialStateProperty.all(
-                            const EdgeInsets.symmetric(horizontal: 79, vertical: 12)),
+                            const EdgeInsets.symmetric(
+                                horizontal: 79, vertical: 12)),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(27))),
                       ),
@@ -54,13 +59,17 @@ class Welcome extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context)=>const Signup()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const Signup()));
                       },
                       style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.blue[400]),
                         padding: MaterialStateProperty.all(
-                            const EdgeInsets.symmetric(horizontal: 72, vertical: 12)),
+                            const EdgeInsets.symmetric(
+                                horizontal: 72, vertical: 12)),
                         shape: MaterialStateProperty.all(RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(27))),
                       ),

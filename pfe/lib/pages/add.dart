@@ -16,7 +16,7 @@ class _addsState extends State<adds> {
   // Get the current user's ID
   // final user = FirebaseAuth.instance.currentUser!;
   User? userId = FirebaseAuth.instance.currentUser;
-
+  var fullname = Lastname + Firstname;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,11 +29,9 @@ class _addsState extends State<adds> {
         ),
         centerTitle: true,
       ),
-      body:
-          Center(
+      body: Center(
         child: Column(
           children: [
-            Text("Hi$Lastname$Firstname $img"),
             const SizedBox(height: 180),
             Container(
               decoration: BoxDecoration(
@@ -48,6 +46,7 @@ class _addsState extends State<adds> {
                 children: [
                   Row(
                     children: [
+
                       Container(
                         margin: const EdgeInsets.only(left: 120),
                         child: DropdownButton<String>(
@@ -122,7 +121,7 @@ class _addsState extends State<adds> {
                           'Post': postcontroller.text.toString(),
                           'Name': Lastname.toString(),
                           'date_creation': DateTime.now(),
-                          'image':img.toString(),
+                          'image': img.toString(),
                         };
                         newPostRef.set(postData);
                         print("Added Succesfuly");

@@ -31,17 +31,19 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 2),
+    Timer(const Duration(seconds: 10),
         navigationToNextPage); // calling startSplashScreenTimer method,to start the timer
   }
 
   void navigationToNextPage() {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => const Welcome()));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const Welcome()));
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Center(
           child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [

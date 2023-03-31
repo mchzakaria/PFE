@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:pfe/widget/widgets.dart';
 
 class Login extends StatefulWidget {
@@ -13,6 +14,7 @@ class _LoginState extends State<Login> {
   final emailcontroller = TextEditingController();
   final passwordcontroller = TextEditingController();
   bool _obscureText = true;
+  Auth auth = Auth();
 
   void login() async {
     Auth auth = Auth();
@@ -58,7 +60,7 @@ class _LoginState extends State<Login> {
                       ),
                       Image.asset("assets/images/clogo.png", width: 280),
                       // Email TextField
-                      
+
                       Container(
                         decoration: BoxDecoration(
                           color: Colors.blue[100],
@@ -189,97 +191,91 @@ class _LoginState extends State<Login> {
                       ),
 
                       // Black Line
-                      SizedBox(
-                        width: 299,
-                        child: Row(
-                          children: [
-                            Expanded(
-                                child: Divider(
-                              thickness: 0.6,
-                              color: Colors.grey[900],
-                            )),
-                            SizedBox(
-                              width: 7,
-                            ),
-                            Text(
-                              "OR",
-                              style: TextStyle(
-                                color: Colors.grey[900],
-                              ),
-                            ),
-                            SizedBox(
-                              width: 7,
-                            ),
-                            Expanded(
-                                child: Divider(
-                              thickness: 0.6,
-                              color: Colors.grey[900],
-                            )),
-                          ],
-                        ),
-                      ),
+                      // SizedBox(
+                      //   width: 299,
+                      //   child: Row(
+                      //     children: [
+                      //       Expanded(
+                      //           child: Divider(
+                      //         thickness: 0.6,
+                      //         color: Colors.grey[900],
+                      //       )),
+                      //       SizedBox(
+                      //         width: 7,
+                      //       ),
+                      //       Text(
+                      //         "OR",
+                      //         style: TextStyle(
+                      //           color: Colors.grey[900],
+                      //         ),
+                      //       ),
+                      //       SizedBox(
+                      //         width: 7,
+                      //       ),
+                      //       Expanded(
+                      //           child: Divider(
+                      //         thickness: 0.6,
+                      //         color: Colors.grey[900],
+                      //       )),
+                      //     ],
+                      //   ),
+                      // ),
 
                       // SVG Pics
-                      Container(
-                        margin: EdgeInsets.symmetric(vertical: 5),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            GestureDetector(
-                              onTap: () {
-                                Auth().signWithGoogle();
-                              },
-                              child: Container(
-                                // padding: EdgeInsets.all(9),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                ),
-                                child: SvgPicture.asset(
-                                  "assets/icons/fb.svg",
-                                  width: 57,
-                                ),
-                              ),
-                            ),
-                            // Facebook
-                            SizedBox(
-                              width: 22,
-                            ),
-                            // Gmail
-                            GestureDetector(
-                              onTap: () {},
-                              child: Container(
-                                // padding: EdgeInsets.all(13),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                ),
-                                child: SvgPicture.asset(
-                                    "assets/icons/gmail.svg",
-                                    width: 44),
-                              ),
-                            ),
-
-                            SizedBox(
-                              width: 22,
-                            ),
-
-                            // Twitter
-                            GestureDetector(
-                              onTap: () {},
-                              child: Container(
-                                padding: EdgeInsets.all(13),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                ),
-                                child: SvgPicture.asset(
-                                  "assets/icons/twitter.svg",
-                                  color: Colors.blue[400],
-                                  height: 37,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      // Container(
+                      //   margin: EdgeInsets.symmetric(vertical: 5),
+                      //   child: Row(
+                      //     mainAxisAlignment: MainAxisAlignment.center,
+                      //     children: [
+                      //       // GestureDetector(
+                      //       //   onTap: () {},
+                      //       //   child: Container(
+                      //       //     // padding: EdgeInsets.all(9),
+                      //       //     decoration: BoxDecoration(
+                      //       //       shape: BoxShape.circle,
+                      //       //     ),
+                      //       //     child: SvgPicture.asset(
+                      //       //       "assets/icons/fb.svg",
+                      //       //       width: 57,
+                      //       //     ),
+                      //       //   ),
+                      //       // ),
+                      //       // Facebook
+                      //       SizedBox(
+                      //         width: 22,
+                      //       ),
+                      //       // Gmail
+                      //       // GestureDetector(
+                      //       //   onTap: () async {
+                      //       //     print(1);
+                      //       //     final user = await signInWithGoogle();
+                      //       //     print(2);
+                      //       //     if (user != null) {
+                      //       //       print(3);
+                      //       //       print(
+                      //       //           'User signed in with Google: ${user.displayName}');
+                      //       //     } else {
+                      //       //       print(4);
+                      //       //       print('User cancelled the sign-in process');
+                      //       //     }
+                      //       //     print(5);
+                      //       //   },
+                      //       //   child: Container(
+                      //       //     // padding: EdgeInsets.all(13),
+                      //       //     decoration: BoxDecoration(
+                      //       //       shape: BoxShape.circle,
+                      //       //     ),
+                      //       //     child: SvgPicture.asset(
+                      //       //         "assets/icons/gmail.svg",
+                      //       //         width: 44),
+                      //       //   ),
+                      //       // ),
+                      //       SizedBox(
+                      //         width: 22,
+                      //       ),
+                      //     ],
+                      //   ),
+                      // ),
                     ],
                   ),
                 ),
