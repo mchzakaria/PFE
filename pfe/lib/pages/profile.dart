@@ -26,19 +26,31 @@ class ProfilePage extends StatefulWidget {
 
 Auth auth = Auth();
 
-bool un = false;
-bool deux = false;
-bool trois = false;
-bool quatre = false;
-bool cinq = false;
-bool six = false;
-bool sept = false;
-bool huit = false;
-bool neuf = false;
+bool un = false,
+    deux = false,
+    trois = false,
+    quatre = false,
+    cinq = false,
+    six = false,
+    sept = false,
+    huit = false,
+    neuf = false;
 
 class _ProfilePageState extends State<ProfilePage> {
   bool is0bscurePassword = true;
   User? userId = FirebaseAuth.instance.currentUser;
+
+  // Function to delete user account
+  Future<void> deleteAccount() async {
+    final userId = FirebaseAuth.instance.currentUser!.uid;
+
+    // Delete user data from Firestore
+    await FirebaseFirestore.instance.collection('users').doc(userId).delete();
+
+    // Delete user email and password from Firebase Authentication
+    await FirebaseAuth.instance.currentUser!.delete();
+    print("Deleted Succeffuly");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -260,60 +272,60 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                               ),
                             ),
-                            Container(
-                              padding:
-                                  const EdgeInsets.only(left: 15, right: 15),
-                              child: Card(
-                                elevation: 15,
-                                child: ListTile(
-                                  title: const Text("DOC ID",
-                                      style: TextStyle(color: Colors.blue)),
-                                  subtitle: Text(
-                                    docid = snapshot.data!.docs[index].id,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Container(
-                              padding:
-                                  const EdgeInsets.only(left: 15, right: 15),
-                              child: Card(
-                                elevation: 15,
-                                child: ListTile(
-                                  title: const Text("UID",
-                                      style: TextStyle(color: Colors.blue)),
-                                  subtitle: quatre
-                                      ? TextFormField(
-                                          controller: idController,
-                                          decoration: const InputDecoration(
-                                            hintText: "Enter UID",
-                                            border: InputBorder.none,
-                                            filled: true,
-                                            fillColor: Colors.white,
-                                          ),
-                                          onFieldSubmitted: (value) {
-                                            setState(() {
-                                              quatre = false;
-                                              snapshot.data!.docs[index]['uid'];
-                                            });
-                                          },
-                                        )
-                                      : Text(
-                                          snapshot.data!.docs[index]['uid'],
-                                        ),
-                                  trailing: IconButton(
-                                    icon: const Icon(Icons.edit),
-                                    onPressed: () {
-                                      setState(() {
-                                        quatre = true;
-                                        idController.text =
-                                            snapshot.data!.docs[index]['uid'];
-                                      });
-                                    },
-                                  ),
-                                ),
-                              ),
-                            ),
+                            // Container(
+                            //   padding:
+                            //       const EdgeInsets.only(left: 15, right: 15),
+                            //   child: Card(
+                            //     elevation: 15,
+                            //     child: ListTile(
+                            //       title: const Text("DOC ID",
+                            //           style: TextStyle(color: Colors.blue)),
+                            //       subtitle: Text(
+                            //         docid = snapshot.data!.docs[index].id,
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
+                            // Container(
+                            //   padding:
+                            //       const EdgeInsets.only(left: 15, right: 15),
+                            //   child: Card(
+                            //     elevation: 15,
+                            //     child: ListTile(
+                            //       title: const Text("UID",
+                            //           style: TextStyle(color: Colors.blue)),
+                            //       subtitle: quatre
+                            //           ? TextFormField(
+                            //               controller: idController,
+                            //               decoration: const InputDecoration(
+                            //                 hintText: "Enter UID",
+                            //                 border: InputBorder.none,
+                            //                 filled: true,
+                            //                 fillColor: Colors.white,
+                            //               ),
+                            //               onFieldSubmitted: (value) {
+                            //                 setState(() {
+                            //                   quatre = false;
+                            //                   snapshot.data!.docs[index]['uid'];
+                            //                 });
+                            //               },
+                            //             )
+                            //           : Text(
+                            //               snapshot.data!.docs[index]['uid'],
+                            //             ),
+                            //       trailing: IconButton(
+                            //         icon: const Icon(Icons.edit),
+                            //         onPressed: () {
+                            //           setState(() {
+                            //             quatre = true;
+                            //             idController.text =
+                            //                 snapshot.data!.docs[index]['uid'];
+                            //           });
+                            //         },
+                            //       ),
+                            //     ),
+                            //   ),
+                            // ),
                             Container(
                               padding:
                                   const EdgeInsets.only(left: 15, right: 15),
@@ -490,8 +502,11 @@ class _ProfilePageState extends State<ProfilePage> {
                 height: 20,
               ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  const SizedBox(
+                    width: 10,
+                  ),
                   ElevatedButton(
                     onPressed: () async {
                       if (FirebaseAuth.instance.currentUser != null) {
@@ -500,9 +515,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     },
                     style: ElevatedButton.styleFrom(
                         primary: Colors.blue,
-                        padding: const EdgeInsets.symmetric(horizontal: 50),
+                        padding: const EdgeInsets.symmetric(horizontal: 35),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20))),
+                            borderRadius: BorderRadius.circular(15))),
                     child: const Text("Signout",
                         style: TextStyle(
                           fontSize: 16,
@@ -510,12 +525,15 @@ class _ProfilePageState extends State<ProfilePage> {
                           color: Colors.white,
                         )),
                   ),
+                  const SizedBox(
+                    width: 65,
+                  ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         primary: Colors.blue,
-                        padding: const EdgeInsets.symmetric(horizontal: 50),
+                        padding: const EdgeInsets.symmetric(horizontal: 45),
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20))),
+                            borderRadius: BorderRadius.circular(15))),
                     child: const Text("Save",
                         style: TextStyle(
                           fontSize: 16,
@@ -535,10 +553,30 @@ class _ProfilePageState extends State<ProfilePage> {
                           villeController.text);
                     },
                   ),
+                  const SizedBox(
+                    width: 10,
+                  ),
                 ],
               ),
               const SizedBox(
-                height: 40,
+                height: 25,
+              ),
+              OutlinedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                    padding: const EdgeInsets.symmetric(horizontal: 40),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10))),
+                onPressed: deleteAccount,
+                child: const Text("Remove Account",
+                    style: TextStyle(
+                      fontSize: 16,
+                      letterSpacing: 2,
+                      color: Color.fromARGB(255, 255, 0, 0),
+                    )),
+              ),
+              const SizedBox(
+                height: 30,
               ),
             ],
           ),

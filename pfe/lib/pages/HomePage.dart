@@ -3,6 +3,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
 import 'package:pfe/widget/widgets.dart';
 
+String FullName = "";
+String Documentid = "";
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
   @override
@@ -85,19 +88,28 @@ class _HomePageState extends State<HomePage> {
                           );
                         }
                         if (snapshot.data!.docs.isEmpty) {
-                          return Text("No data Found ");
+                          return Column(
+                            children: [
+                              SizedBox(
+                                height: 150,
+                              ),
+                              Image.asset("assets/images/qq.png"),
+                            ],
+                          );
                         }
                         if (snapshot.data != null) {
                           return ListView.builder(
                               itemCount: snapshot.data!.docs.length,
                               itemBuilder: (context, index) {
+                                FullName = snapshot.data!.docs[index]['Name'];
+                                Documentid = snapshot.data!.docs[index].id;
                                 return Column(children: [
                                   Container(
                                     padding: EdgeInsets.all(10),
                                     width: 650,
                                     decoration: BoxDecoration(
                                         color:
-                                            Color.fromARGB(255, 246, 247, 247),
+                                            Color.fromARGB(255, 161, 212, 212),
                                         borderRadius:
                                             BorderRadius.circular(15)),
                                     child: Column(
@@ -119,28 +131,33 @@ class _HomePageState extends State<HomePage> {
                                                 ),
                                               ),
                                             ),
+                                            SizedBox(width: 5.0),
                                             Container(
                                               margin: EdgeInsets.only(left: 6),
                                               child: Text(
-                                                snapshot.data!.docs[index]
-                                                    ['Name'],
+                                                FullName,
                                                 style: TextStyle(
-                                                  fontSize: 18,
+                                                  fontSize: 16,
                                                   color: Colors.black,
                                                 ),
                                               ),
                                             ),
-                                            Container(
-                                                margin:
-                                                    EdgeInsets.only(left: 55),
-                                                child: Text(
-                                                  formateddate(
-                                                      snapshot.data!.docs[index]
-                                                          ['date_creation']),
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                  ),
-                                                )),
+                                            SizedBox(width: 60.0),
+                                            IconButton(
+                                              icon: Icon(Icons.delete),
+                                              onPressed: () {
+                                                // Get the DocumentReference for the document to be deleted
+                                                DocumentReference
+                                                    documentReference =
+                                                    FirebaseFirestore.instance
+                                                        .collection(
+                                                            'Publication')
+                                                        .doc(Documentid);
+                                                // Delete the document from the Firestore database
+                                                documentReference.delete();
+                                                print("Deleted Succesfully");
+                                              },
+                                            ),
                                           ],
                                         ),
                                         Container(
@@ -166,6 +183,8 @@ class _HomePageState extends State<HomePage> {
                                               ['Post']),
                                         ),
                                         Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
                                             GestureDetector(
                                                 onTap: _toggleFavorite,
@@ -176,6 +195,17 @@ class _HomePageState extends State<HomePage> {
                                                   color: _isFavorited
                                                       ? Colors.red
                                                       : Colors.grey,
+                                                )),
+                                            Container(
+                                                margin:
+                                                    EdgeInsets.only(left: 55),
+                                                child: Text(
+                                                  formateddate(
+                                                      snapshot.data!.docs[index]
+                                                          ['date_creation']),
+                                                  style: TextStyle(
+                                                    fontSize: 16,
+                                                  ),
                                                 )),
                                           ],
                                         )
@@ -200,3 +230,46 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
+
+
+
+
+// Container(
+                                            //   child: PopupMenuButton<String>(
+                                            //     onSelected: (value) {
+                                            //       // Handle the selected value (either "Edit" or "Delete")
+                                            //       if (value == "Edit") {
+                                            //         print(
+                                            //             " HI EDIT $FullName ");
+                                            //       } else if (value ==
+                                            //           "Delete") {
+                                            //         print(
+                                            //             " HI DELETE $FullName");
+                                            //       }
+                                            //     },
+                                            //     itemBuilder: (BuildContext
+                                            //             context) =>
+                                            //         <PopupMenuEntry<String>>[
+                                            //       PopupMenuItem<String>(
+                                            //         value: "Edit",
+                                            //         child: Row(
+                                            //           children: <Widget>[
+                                            //             Icon(Icons.edit),
+                                            //             Text("Edit"),
+                                            //           ],
+                                            //         ),
+                                            //       ),
+                                            //       PopupMenuItem<String>(
+                                            //         value: "Delete",
+                                            //         child: Row(
+                                            //           children: <Widget>[
+                                            //             Icon(Icons.delete),
+                                            //             Text("Delete"),
+                                            //           ],
+                                            //         ),
+                                            //       ),
+                                            //     ],
+                                            //     child: Icon(Icons.more_vert),
+                                            //   ),
+                                            // ),

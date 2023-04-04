@@ -16,7 +16,8 @@ class _addsState extends State<adds> {
   // Get the current user's ID
   // final user = FirebaseAuth.instance.currentUser!;
   User? userId = FirebaseAuth.instance.currentUser;
-  var fullname = Lastname + Firstname;
+  var fullname = Lastname + " " + Firstname;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,7 +47,6 @@ class _addsState extends State<adds> {
                 children: [
                   Row(
                     children: [
-
                       Container(
                         margin: const EdgeInsets.only(left: 120),
                         child: DropdownButton<String>(
@@ -86,19 +86,31 @@ class _addsState extends State<adds> {
                     ],
                   ),
                   const SizedBox(height: 10),
-                  Container(
-                    margin: const EdgeInsets.only(left: 15),
-                    width: 280,
-                    child: TextField(
-                      controller: postcontroller,
-                      style: const TextStyle(
-                        fontSize: 15,
+                  Row(
+                    children: [
+                      CircleAvatar(
+                        child: Image.network(
+                          img,
+                          fit: BoxFit.cover,
+                          width: 45,
+                          height: 45,
+                        ),
                       ),
-                      decoration: const InputDecoration(
-                        border: UnderlineInputBorder(),
-                        hintText: "Feel free to write your post",
+                      Container(
+                        margin: const EdgeInsets.only(left: 15),
+                        width: 260,
+                        child: TextField(
+                          controller: postcontroller,
+                          style: const TextStyle(
+                            fontSize: 15,
+                          ),
+                          decoration: const InputDecoration(
+                            border: UnderlineInputBorder(),
+                            hintText: "Feel free to write your post",
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                   const SizedBox(
                     height: 12,
@@ -119,12 +131,43 @@ class _addsState extends State<adds> {
                         Map<String, dynamic> postData = {
                           'Domaine': dropdownValue,
                           'Post': postcontroller.text.toString(),
-                          'Name': Lastname.toString(),
+                          'Name': fullname.toString(),
                           'date_creation': DateTime.now(),
                           'image': img.toString(),
                         };
-                        newPostRef.set(postData);
-                        print("Added Succesfuly");
+                        newPostRef.set(postData).then((value) {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: Text('Success'),
+                                content: Row(
+                                  children: [
+                                    Image.asset(
+                                      "assets/images/added.jpg",
+                                      width: 28,
+                                      height: 28,
+                                    ),
+                                    SizedBox(
+                                      width: 5,
+                                    ),
+                                    const Text('Post Created Successfully'),
+                                  ],
+                                ),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: Text('OK'),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        }).catchError((error) {
+                          print('Error adding data: $error');
+                        });
                       },
                       child: const Text(' Publier '),
                     ),
