@@ -272,20 +272,20 @@ class _ProfilePageState extends State<ProfilePage> {
                                 ),
                               ),
                             ),
-                            // Container(
-                            //   padding:
-                            //       const EdgeInsets.only(left: 15, right: 15),
-                            //   child: Card(
-                            //     elevation: 15,
-                            //     child: ListTile(
-                            //       title: const Text("DOC ID",
-                            //           style: TextStyle(color: Colors.blue)),
-                            //       subtitle: Text(
-                            //         docid = snapshot.data!.docs[index].id,
-                            //       ),
-                            //     ),
-                            //   ),
-                            // ),
+                            Container(
+                              padding:
+                                  const EdgeInsets.only(left: 15, right: 15),
+                              child: Card(
+                                elevation: 15,
+                                child: ListTile(
+                                  title: const Text("DOC ID",
+                                      style: TextStyle(color: Colors.blue)),
+                                  subtitle: Text(
+                                    docid = snapshot.data!.docs[index].id,
+                                  ),
+                                ),
+                              ),
+                            ),
                             // Container(
                             //   padding:
                             //       const EdgeInsets.only(left: 15, right: 15),
@@ -541,7 +541,6 @@ class _ProfilePageState extends State<ProfilePage> {
                           color: Colors.white,
                         )),
                     onPressed: () {
-                      un = false;
                       auth.updateDocument(
                           docid,
                           cinController.text,
@@ -551,6 +550,15 @@ class _ProfilePageState extends State<ProfilePage> {
                           numberController.text,
                           specialityController.text,
                           villeController.text);
+                      un = false;
+                      deux = false;
+                      trois = false;
+                      quatre = false;
+                      cinq = false;
+                      six = false;
+                      sept = false;
+                      huit = false;
+                      neuf = false;
                     },
                   ),
                   const SizedBox(
