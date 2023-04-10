@@ -1,4 +1,4 @@
-<h2 align="center">Application Mobile de Recherche de stage et d'emploi</h2>
+<h1 align="left">Application Mobile de Recherche de stage et d'emploi</h1>
 <h3 align="left"> Contributeurs : </h3>
 <ul>
   <li> @mchzakaria </li>
