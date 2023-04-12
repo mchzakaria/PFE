@@ -2,7 +2,7 @@
 <h3 align="left"> Contributeurs : </h3>
 <ul>
   <li> <a href="https://github.com/mchzakaria"> Machmach Zakaria </a> </li>
-  <li> <a href="https://github.com/"> Machmach Zakaria </a> </li>
+  <li> <a href="https://github.com/Zinebfatihi"> Fatihi Zineb </a> </li>
 </ul>
 
 <h3 align="center"> Informations sur le Projet: </h3>
